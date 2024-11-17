@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Miaudote
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div>
+      <ion-button id="btn-adotar-animal">Adotar um animal</ion-button>
+      <ion-button id="btn-ajudar-doador">Ajudar um doador</ion-button>
+    </div>
+    
+
+    <h1>Pets disponíveis</h1>
+
+    <ion-button>Filtros</ion-button>
+
+    <div id="pets">
+      <ion-card>
+        <ion-card-header class="status-pet">
+          <ion-card-title >DISPONÍVEL</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <img src="../../assets/gato-2.png" alt="">
+          <ion-card-title>Frederico</ion-card-title>
+          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
+          <ul class="infos-pet">
+            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">Macho</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
+          </ul>
+          <ion-button>Ver detalhes</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  
+</ion-content>
