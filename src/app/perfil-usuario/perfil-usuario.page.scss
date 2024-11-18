@@ -7,4 +7,105 @@
     transform: translateY(-50%);
 }
 
+.conteudo {
+    --ion-background-color: #D6E1FF;
+}
 
+.menu-topo {
+    display: flex;
+    gap: 24px;
+    padding-left: 16px;
+    background-color: white;
+}
+
+.logo-miaudote {
+    max-width: 220px;
+}
+
+.my-icon {
+    color: #87138F;
+}
+
+.icone-perfil {
+    width: 16px;
+}
+
+.card {
+    background-color: white;
+    max-width: 300px;
+}
+
+.botao-editar {
+    --background: #512454;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-editar:hover {
+    --background: #87138F;
+}
+
+.botao-adicionar {
+    --background: #87138F;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-adicionar:hover {
+    --background: #512454;
+}
+
+.botao-excluir {
+    --background: #FFDADB;
+    color: #AE0003;
+    border: solid 3px #AE0003;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+#pets {
+    margin-top: 28px;
+}
+
+.status-pet {
+    background-color: #06A462;
+    padding: 12px;
+    text-align: center;
+}
+
+.campo-filtro {
+    background-color: #D6E1FF;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.titulo-filtro {
+    font-size: 16px;
+    font-weight: bold;
+    color: #87138F;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.input-filtro {
+    --background: white;
+    color: #512454;
+    border: solid 2px #512454;
+    --border-width: 0px;
+}
+
+ion-item {
+    --inner-border-width: 0px;
+    --highlight-color-focused: transparent;
+}
+
+.infos-monetaria {
+    background-color: #512454;
+    color: white;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 12px;
+    margin: 16px 0px;
+}

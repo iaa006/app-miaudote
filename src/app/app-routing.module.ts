@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'perfil-usuario',
     loadChildren: () => import('./perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
+  },  {
+    path: 'perfil-animal',
+    loadChildren: () => import('./perfil-animal/perfil-animal.module').then( m => m.PerfilAnimalPageModule)
   },
+  {
+    path: 'cadastrar-animal',
+    loadChildren: () => import('./cadastrar-animal/cadastrar-animal.module').then( m => m.CadastrarAnimalPageModule)
+  },
+
 ];
 
 @NgModule({
