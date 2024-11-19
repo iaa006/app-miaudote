@@ -1,35 +1,8 @@
-#container {
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+
+.menu-opcoes{
+  padding-top: 20px;
 }
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-#container h1{
-  color: #87138F;
-  font-weight: bolder;
-}
-
 
 #btn-adotar-animal{
   --background: #87138F;
@@ -43,13 +16,80 @@
   --color: #fff;
   text-transform: none;
   font-weight: bold;
+}
+
+#btn-filtro{
+  background-color:#fff;
+  border: 2px solid #1E1E1E;
+  border-radius: none;
+  box-shadow: none;
+  width: 80%;
+  color: #1E1E1E;
+  padding: 4px 4px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto auto;
+  align-items: center;
+}
+
+#conteudo-menu{
+  --background: #512454;
+  padding-top: 30px;
 
 }
 
+.card-perfil-menu{
+  justify-content: center;
+  background-color: #512454;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  display: flex;
+  padding: 4px 12px;
+  align-items: center;
+  width: 90%;
+  margin: auto auto;
+}
 
-ion-content{
+button.card-perfil-menu{
+  gap: 4px;
+  padding: 2px 6px;
+  bottom: 8%;
+  right: auto;
+  left: 5%;
+}
+
+.card-perfil-menu img{
+  width: 30%;
+  height: 30%;
+
+}
+
+.card-perfil-menu div{
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.card-perfil-menu div a{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+}
+
+
+.card-perfil-menu div h4{
+  margin: 0;
+}
+
+#conteudo-principal{
   --background: #D6E1FF;
+  text-align: center;
+  --color:#87138F;
+  padding-top: 30px;
 }
+
+
 
 ion-toolbar{
   --background: #fff;
@@ -57,7 +97,13 @@ ion-toolbar{
 }
 
 
-.status-pet{
+.status-pet-disponivel{
+  --background: #06A462;
+  font-weight: 800;
+}
+
+
+.status-pet-indisponivel{
   --background: #CB0307;
   font-weight: 800;
 }
@@ -104,4 +150,32 @@ ul.infos-pet li{
   display: flex;
   align-items: center;
   justify-self: center;
+}
+
+
+.campo-filtro {
+  background-color: #D6E1FF;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.titulo-filtro {
+  font-size: 16px;
+  font-weight: bold;
+  color: #87138F;
+  margin-bottom: 8px;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.input-filtro {
+  --background: white;
+  color: #512454;
+  border: solid 2px #512454;
+  --border-width: 0px;
+}
+
+ion-item {
+  --inner-border-width: 0px;
+  --highlight-color-focused: transparent;
 }
