@@ -1,13 +1,89 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cadastrar-animal</ion-title>
+    <ion-row class="ion-align-items-center menu-topo">
+      <lucide-icon name="menu" class="my-icon"></lucide-icon>
+      <img src="../../assets/logo-miaudote.svg" alt="Logo do Miaudote" width="70%" class="logo-miaudote">
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cadastrar-animal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="conteudo">
+
+  <div class="ion-text-center">
+    <h3 style="font-weight: 700; color: #512454; margin: 24px 0px;">Adicionar animal</h3>
+  </div>
+
+  <ion-card class="card">
+    <div class="ion-padding" style="--background: white;">
+  
+      <div class="campo-forms">
+        <h3 class="titulo-forms">*Informe o nome</h3>
+        <ion-item class="input-forms">
+          <lucide-icon name="user" class="my-icon" style="color: #777DAA;" slot="start"></lucide-icon>
+          <ion-input placeholder="Nome do animal" [(ngModel)]="nomeAnimal"></ion-input>
+        </ion-item>
+      </div>
+  
+      <div class="campo-forms">
+        <h3 class="titulo-forms">*Informe a espécie</h3>
+        <ion-radio-group [(ngModel)]="especieSelecionada">
+          <ion-item style="--background:none; color: #1E1E1E;"
+            *ngFor="let especie of ['Gato', 'Cachorro', 'Roedor', 'Pássaro', 'Outros']">
+            <ion-label>{{ especie }}</ion-label>
+            <ion-radio style="--color: #512454;" slot="start" [value]="especie"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+  
+      <div class="campo-forms">
+        <h3 class="titulo-forms">*Informe o sexo</h3>
+        <ion-radio-group [(ngModel)]="sexoSelecionado">
+          <ion-item style="--background:none; color: #1E1E1E;" *ngFor="let sexo of ['Macho', 'Fêmea']">
+            <ion-label>{{ sexo }}</ion-label>
+            <ion-radio style="--color: #512454;" slot="start" [value]="sexo"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+  
+      <div class="campo-forms">
+        <h3 class="titulo-forms">*Informe o tamanho</h3>
+        <ion-radio-group [(ngModel)]="tamanhoSelecionado">
+          <ion-item style="--background:none; color: #1E1E1E;"
+            *ngFor="let tamanho of ['Pequeno', 'Médio', 'Grande']">
+            <ion-label>{{ tamanho }}</ion-label>
+            <ion-radio style="--color: #512454;" slot="start" [value]="tamanho"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+  
+      <div class="campo-forms">
+        <h3 class="titulo-forms">*Informe a idade</h3>
+        <ion-radio-group [(ngModel)]="idadeSelecionada">
+          <ion-item style="--background:none; color: #1E1E1E;"
+            *ngFor="let idade of ['Filhote', 'Adulto', 'Idoso']">
+            <ion-label>{{ idade }}</ion-label>
+            <ion-radio style="--color: #512454;" slot="start" [value]="idade"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+  
+      <ion-button expand="block" class="botao-foto" style="width: 100%;">Inserir foto</ion-button>
+
+      <div class="campo-forms">
+        <h3 class="titulo-forms">Informe a descrição</h3>
+        <ion-item class="input-forms ion-text-start">
+          <ion-textarea style="text-align: left; vertical-align: top; padding-bottom: 16px;" placeholder="Descrição" [(ngModel)]="descricao"></ion-textarea>
+        </ion-item>
+      </div>
+
+      <div class="botoes">
+        <ion-button expand="block" class="botao-cancelar">Cancelar</ion-button>
+        <ion-button expand="block" class="botao-confirmar">Confirmar</ion-button>
+      </div>
+    </div>
+  
+  </ion-card>
+  
+
+  
 </ion-content>

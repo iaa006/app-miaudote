@@ -8,12 +8,17 @@ import { CadastrarAnimalPageRoutingModule } from './cadastrar-animal-routing.mod
 
 import { CadastrarAnimalPage } from './cadastrar-animal.page';
 
+import { LucideAngularModule, User, Menu } from 'lucide-angular';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CadastrarAnimalPageRoutingModule
+    CadastrarAnimalPageRoutingModule,
+    LucideAngularModule.pick({User, Menu})
+
   ],
   declarations: [CadastrarAnimalPage]
 })
