@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo MiAudote" class="logo" />
+  </div>
+
+  <h2 class="title">Cadastro</h2>
+  <p class="subtitle">Insira seus dados para criar uma nova conta</p>
+
+  <form [formGroup]="cadastroForm" (ngSubmit)="proximaEtapa()">
+    <ion-item>
+      <ion-label position="floating">Nome completo *</ion-label>
+      <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="formControls.nome.invalid && formControls.nome.touched">
+      Nome é obrigatório.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">E-mail *</ion-label>
+      <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="formControls.email.invalid && formControls.email.touched">
+      E-mail inválido.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Telefone *</ion-label>
+      <ion-input type="tel" formControlName="telefone" placeholder="Telefone"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="formControls.telefone.invalid && formControls.telefone.touched">
+      Telefone inválido.
+    </div>
+
+    <ion-item>
+      <ion-label>Tipo de Cadastro *</ion-label>
+      <ion-radio-group formControlName="tipoCadastro">
+        <ion-item>
+          <ion-label>CPF</ion-label>
+          <ion-radio slot="start" value="cpf"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>CNPJ</ion-label>
+          <ion-radio slot="start" value="cnpj"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+    <div class="error" *ngIf="formControls.tipoCadastro.invalid && formControls.tipoCadastro.touched">
+      Selecione uma opção.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">CPF/CNPJ *</ion-label>
+      <ion-input type="text" formControlName="documento" placeholder="CPF/CNPJ"></ion-input>
+    </ion-item>
+    <div class="error" *ngIf="formControls.documento.invalid && formControls.documento.touched">
+      Documento inválido.
+    </div>
+
+    <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
+      Avançar
+      <ion-icon slot="end" name="arrow-forward"></ion-icon>
+    </ion-button>
+  </form>
+
+  <div class="footer-links">
+    <p>Já possui uma conta? <a href="/login">Entrar</a></p>
+    <p><a href="/home">Permanecer sem sessão</a></p>
+  </div>
+</ion-content>

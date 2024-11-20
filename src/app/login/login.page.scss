@@ -1,35 +1,81 @@
-.login-container {
+.conteudo-login {
+    --background: #5d3060; 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100%;
-    padding: 16px;
-}
-  
-ion-card {
-    width: 100%;
-    max-width: 400px;
-    background: white;
-    padding: 10px;
 }
 
-ion-content {
-    --background: #87138F; 
-}
-
-ion-toolbar{
-    --background: white;
-}
-
-ion-card ion-label{
-    --background: white;
-}
-
-ion-text{
+.texto-boas-vindas {
     display: flex;
-    justify-content: center;  
-    align-items: center;      
-    padding: 0;            
+    justify-content: center; 
+    font-size: 24px;
     font-weight: bold;
-    font-size: 20px;
+    color: #ffffff; 
+    margin: 20px 0;
+}
+
+.cartao-login {
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff; 
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.cartao-login ion-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5d3060; 
+    margin-bottom: 10px;
+}
+
+.campo-input {
+    --background: transparent;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.campo-input ion-icon {
+    color: #5d3060; 
+}
+
+.campo-input ion-input {
+    font-size: 16px;
+    color: #5d3060;
+}
+
+.texto-esqueci-senha {
+    font-size: 14px;
+    color: #5d3060;
+    text-align: right;
+    margin: 10px 0;
+}
+
+.botao-login {
+    --background: #5d3060; 
+    --color: #ffffff; 
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.texto-cadastro {
+    font-size: 14px;
+    color: #5d3060;
+    margin-top: 10px;
+}
+
+.link-cadastro {
+    color: #5d3060;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.texto-continuar {
+    font-size: 14px;
+    color: #5d3060;
+    margin-top: 10px;
+    text-decoration: underline;
 }
