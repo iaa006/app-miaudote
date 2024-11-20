@@ -25,4 +25,12 @@ export class ApiService {
 
     return this.http.get(`http://127.0.0.1:8000/api/usuarios/?tipo=${tipo}&cidade=${cidade}&estado=${estado}`)
   }
+
+  getExisteUsuario(id:string){
+    return this.http.get(`http://127.0.0.1:8000/api/existe_usuario/?pk=${id}`)
+  }
+
+  alterarSenha(novosDados:any){
+    return this.http.put(`http://127.0.0.1:8000/api/redefinir_senha/`, novosDados)
+  }
 }

@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'perfil-usuario',
     loadChildren: () => import('./perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioPageModule)
   },
+  {
+    path: 'redefinir-senha',
+    loadChildren: () => import('./redefinir-senha/redefinir-senha.module').then( m => m.RedefinirSenhaPageModule)
+  },
 ];
 
 @NgModule({
