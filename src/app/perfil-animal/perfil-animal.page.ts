@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PerfilAnimalPage implements OnInit {
   id : number = 1;
   dadosAnimal : any;
+  usuarioLogadoeDoador : boolean = false;
   dadosSolicitacoes : any[] = [];
   constructor(private apiServices : ApiService, private route: ActivatedRoute) { }
 
@@ -20,15 +21,19 @@ export class PerfilAnimalPage implements OnInit {
       }
     });
 
-    this.getDadosAnimal();
+    this.usuarioLogadoEDoador();
   }
-
-  getDadosAnimal(){
+  async usuarioLogadoEDoador(){
+    await this.getDadosAnimal()
+    console.log(this.apiServices.infoUsuario.id_user)
+    if(this.apiServices.infoUsuario.id_user === this.dadosAnimal.id_doador){
+      this.usuarioLogadoeDoador = true;
+    }
+  }
+   async getDadosAnimal(){
     console.log(this.id)
-    this.apiServices.getAnimalUnico(this.id).subscribe((data: any) =>{
-      this.dadosAnimal = data;
-      console.log(this.dadosAnimal)
-    })
+    const data :any = await this.apiServices.getAnimalUnico(this.id).toPromise()
+    this.dadosAnimal = data
   }
   getSolicitacoes(){
     this.apiServices.getSolicitacoesAnimal(this.id).subscribe((data: any) =>{

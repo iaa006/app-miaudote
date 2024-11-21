@@ -76,7 +76,7 @@ export class CadastroPage {
       ...this.cadastroForm.value,
       ...this.enderecoForm.value,
       ...this.usuarioForm.value,
-      dadosBancarios: this.bancarioForm.value,
+      ...this.bancarioForm.value,
     };
 
     console.log('Cadastro finalizado:', cadastroCompleto);
