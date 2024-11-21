@@ -1,0 +1,86 @@
+
+.conteudo {
+    --ion-background-color: #D6E1FF;
+}
+
+.menu-topo {
+    display: flex;
+    gap: 24px;
+    padding-left: 16px;
+    background-color: white;
+}
+
+.logo-miaudote {
+    max-width: 220px;
+}
+
+.my-icon {
+    color: #87138F;
+}
+
+.card {
+    background-color: white;
+    max-width: 280px;
+    margin: 0 auto 24px auto;
+}
+
+.campo-forms {
+    background-color: white;
+    padding: 16px;
+}
+
+
+.titulo-forms {
+    font-size: 16px;
+    font-weight: normal;
+    color: #512454;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.input-forms {
+    --background: white;
+    color: #512454;
+    border: solid 2px #777DAA;
+    --border-width: 0px;
+}
+
+ion-item {
+    --inner-border-width: 0px;
+    --highlight-color-focused: transparent;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.botao-foto {
+    --background: #e1e4fa;
+    color: #585e8e;
+    border: solid 3px #777DAA;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+.botao-cancelar {
+    --background: #FCE5FE;
+    color: #87138F;
+    border: solid 2px #87138F;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+.botao-confirmar {
+    --background: #87138F;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-confirmar:hover {
+    --background: #512454;
+}

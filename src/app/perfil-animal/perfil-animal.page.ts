@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -40,4 +41,5 @@ export class PerfilAnimalPage implements OnInit {
       this.dadosSolicitacoes = data;
     })
   }
+
 }
