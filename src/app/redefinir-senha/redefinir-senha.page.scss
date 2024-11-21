@@ -1,0 +1,92 @@
+ion-toolbar{
+    --background: #fff;
+    --color: #87138F;
+}
+  
+
+#conteudo-principal{
+    --background: #512454;
+    text-align: center;
+    --color:#fff;
+    padding-top: 30px;
+}
+
+#box-redefinirSenha{
+    background-color: #FFFFFF;
+    color: #512454;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    border-radius: 12px;
+    margin: 10px auto;
+    padding: 18px;
+}
+
+#box-redefinirSenha label{
+    text-align: left;
+    margin-left: 6px;
+}
+.input-wrapper{
+    padding: 6px 6px 4px 6px;
+    border: 1px solid #777DAA;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+.input-wrapper lucide-icon{
+    color: #777DAA;
+}
+
+#box-redefinirSenha div{
+display: flex;
+flex-direction: column;
+    gap: 10px;
+}
+
+#box-redefinirSenha input{
+    border: none;
+    background-color: #fff;
+    color: #777DAA;
+    width: 90%;
+    padding-bottom:4px;
+}
+#box-redefinirSenha input:focus{
+    outline: none;
+}
+
+.botao-cheio{
+    border: 2px solid #87138F;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #87138F;
+}
+
+.flex-around{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.flex-around .botao-vazio, .flex-around .botao-cheio{
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+}
+
+.botao-vazio{
+    border: 2px solid #87138F;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #87138F;
+    background-color: rgba($color: #87138F, $alpha: 0.11);
+    text-decoration: none;
+}
+
+a.botao-vazio{
+    font-size: 0.75rem;
+}

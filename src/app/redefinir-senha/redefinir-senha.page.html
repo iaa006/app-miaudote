@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    <ion-title>
+      Miaudote
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" id="conteudo-principal">
+    <h1>Redefinir senha</h1>
+    <div id="box-redefinirSenha">
+      <span>Confirme sua conta para continuar</span>
+      <div *ngIf="pagina1;else pagina2">
+        <label for="cpf">*Informe seu CPF/CNPJ</label>
+        <span class="input-wrapper">
+          <lucide-icon name="user"></lucide-icon><input type="text" placeholder="CPF/CNPJ" [(ngModel)]="idUsuario" name="cpf">
+        </span>
+        
+        <span class="flex-around">
+          <button class="botao-vazio"><lucide-icon name="arrow-left"></lucide-icon>Voltar</button>
+          <button class="botao-cheio" (click)="proximaPagina()">Avançar<lucide-icon name="arrow-right"></lucide-icon></button>
+        </span>
+        
+      </div>
+      <ng-template #pagina2>
+        <label for="senha">*Crie sua nova senha</label>
+        <span class="input-wrapper">
+          <lucide-icon name="lock"></lucide-icon><input type="password" placeholder="Senha" name="senha" [(ngModel)]="senha">
+        </span>
+        <label for="Csenha">*Confirme sua nova senha</label>
+        <span class="input-wrapper">
+          <lucide-icon name="lock"></lucide-icon><input type="password" placeholder="Confirmar senha" name="Csenha" [(ngModel)]="csenha">
+        </span>
+        <span class="flex-around">
+          <button class="botao-vazio" (click)="voltarPagina()"><lucide-icon name="arrow-left"></lucide-icon>Voltar</button>
+          <button class="botao-cheio" (click)="confirmarSenha()">Confirmar</button>
+        </span>
+      </ng-template>
+      
+      <span>Não possui uma conta? <a href="" class="botao-vazio">Cadastre-se</a></span>
+      <a style="color: #87138F; font-weight: 700;" href="">Permanecer sem sessão</a>
+    </div>
+      
+</ion-content>

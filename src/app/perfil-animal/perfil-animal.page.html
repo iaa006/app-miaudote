@@ -1,13 +1,76 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>perfil-animal</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">perfil-animal</ion-title>
+      <ion-title>Miaudote</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button><lucide-icon name="arrow-right"></lucide-icon></ion-menu-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  <ion-content id="conteudo-menu"class="ion-padding">
+    <div class="card-perfil-menu">
+      <img src="../../assets/gato-2.png" alt="" srcset="">
+      <div>
+        <h4>Igão Foguete</h4>
+        <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+      </div>
+    </div>
+    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+        Miaudote
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" id="conteudo-principal">
+    <div id="box-animal">
+      <img src="../../assets/gato-2.png" alt="">
+      <h1 style="color: #512454;">{{ dadosAnimal.animal_nome }}</h1>
+      <h3 style="color: #512454;">{{ dadosAnimal.nome_doador }}</h3>
+      <h4 class="botao-vazio">Acessar doador</h4>
+      <ul class="infos-pet">
+        <li><lucide-icon name="phone"></lucide-icon> {{ dadosAnimal.telefone_doador }}</li>
+        <li><lucide-icon name="mail"></lucide-icon> {{ dadosAnimal.email_doador }}</li>
+        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Espécie: </strong>{{ dadosAnimal.especie }}</li>
+        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Sexo: </strong>{{ dadosAnimal.sexo }}</li>
+        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Tamanho: </strong>{{ dadosAnimal.tamanho }}</li>
+        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Idade: </strong>{{ dadosAnimal.idade }}</li>
+      </ul>
+      <div class="nota-azul"><span><lucide-icon name="map-pin"></lucide-icon><strong>Endereço</strong></span>
+      <div>{{ dadosAnimal.localizacao }}</div></div>
+      <div class="nota-azul"><span><strong>Descrição</strong></span>
+      <div>{{ dadosAnimal.descricao }}</div></div>
+      <button>Quero Adotar!</button>
+    </div>
+
+    <div id="solicitacoes">
+      <h1 style="color: #512454;">Solicitações de adoção</h1>
+      <div class="card">
+        <div class="card-header">
+          09/11/2024 - 22:10
+        </div>
+        <div class="card-content">
+          <span>
+            <img src="../../assets/gato-2.png" alt="" srcset="">
+            <div>
+              <h4>Igão Foguete</h4>
+            <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+            </div>
+          </span>
+          <span style="gap: 30%;">
+            <button class="botao-vazio">Rejeitar</button>
+          <button class="botao-cheio">Aceitar</button>
+          </span>
+          
+        </div>
+      </div>
+    </div>
+  </ion-content>

@@ -1,0 +1,78 @@
+.conteudoCadastro {
+  --background: #5d3060; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center; 
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff; 
+  margin: 20px 0;
+}
+
+form {
+  width: 90%;
+  max-width: 400px;
+  background: #ffffff; 
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5d3060; 
+  margin-bottom: 10px;
+}
+
+ion-item {
+  --background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+ion-item ion-icon {
+  color: #5d3060; 
+}
+
+ion-item ion-label {
+  color: #5d3060;
+}
+
+ion-item ion-input {
+  font-size: 16px;
+  color: #5d3060;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 20px;
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+}
+
+.textoConta {
+  color: #ffffff;
+}
+
+ion-button {
+  --background: #5d3060; 
+  --color: #ffffff; 
+  border-radius: 10px;
+  margin: 15px 0;
+}
+

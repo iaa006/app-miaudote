@@ -1,43 +1,259 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Miaudote
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-    <div>
-      <ion-button id="btn-adotar-animal">Adotar um animal</ion-button>
-      <ion-button id="btn-ajudar-doador">Ajudar um doador</ion-button>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Miaudote</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button><lucide-icon name="arrow-right"></lucide-icon></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="conteudo-menu"class="ion-padding">
+    <div class="card-perfil-menu">
+      <img src="../../assets/gato-2.png" alt="" srcset="">
+      <div>
+        <h4>Igão Foguete</h4>
+        <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+      </div>
     </div>
-    
+    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
+  </ion-content>
+</ion-menu>
 
-    <h1>Pets disponíveis</h1>
-
-    <ion-button>Filtros</ion-button>
-
-    <div id="pets">
-      <ion-card>
-        <ion-card-header class="status-pet">
-          <ion-card-title >DISPONÍVEL</ion-card-title>
-        </ion-card-header>
-        
-        <ion-card-content>
-          <img src="../../assets/gato-2.png" alt="">
-          <ion-card-title>Frederico</ion-card-title>
-          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
-          <ul class="infos-pet">
-            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">Macho</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
-          </ul>
-          <ion-button>Ver detalhes</ion-button>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+      <ion-title>
+        Miaudote
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" id="conteudo-principal">
+      
   
-</ion-content>
+      <div class="menu-opcoes">
+        <ion-button id="btn-adotar-animal" (click)="verAnimais()">Adotar um animal</ion-button>
+        <ion-button id="btn-ajudar-doador" (click)="verDoador()">Ajudar um doador</ion-button>
+      </div>
+      
+      <div *ngIf="verAnimaisOuDoadores; else verDoadores">
+        <h1>Pets disponíveis</h1>
+    
+        <button id="btn-filtro"><span>Filtros</span><span><lucide-icon name="list-filter"></lucide-icon></span></button>
+
+        <ion-modal trigger="btn-filtro" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-toolbar style="--background: white;">
+              <ion-title slot="start" style="color: #512454;">Filtrar</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="cancel()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                    [size]="16"></lucide-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+    
+            <ion-content class="ion-padding" style="--background: white;">
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Estado</h3>
+                <ion-select style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+                  placeholder="Selecionar" [(ngModel)]="estadoSelecionado">
+                  <ion-select-option
+                    style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+                    *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
+                </ion-select>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Cidade</h3>
+                <ion-item class="input-filtro">
+                  <ion-input placeholder="Informe a cidade" [(ngModel)]="cidade"></ion-input>
+                  <ion-icon style="color: #512454;" slot="end" name="search-outline"></ion-icon>
+                </ion-item>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Espécie</h3>
+                <ion-radio-group [(ngModel)]="especieSelecionada">
+                  <ion-item style="--background:none; color: #1E1E1E;"
+                    *ngFor="let especie of ['Gato', 'Cachorro', 'Roedor', 'Pássaro', 'Todos', 'Outros']">
+                    <ion-label>{{ especie }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="especie"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Sexo</h3>
+                <ion-radio-group [(ngModel)]="sexoSelecionado">
+                  <ion-item style="--background:none; color: #1E1E1E;" *ngFor="let sexo of ['M', 'F', 'Todos']">
+                    <ion-label>{{ sexo }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="sexo"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Tamanho</h3>
+                <ion-radio-group [(ngModel)]="tamanhoSelecionado">
+                  <ion-item style="--background:none; color: #1E1E1E;"
+                    *ngFor="let tamanho of ['Pequeno', 'Médio', 'Grande', 'Todos']">
+                    <ion-label>{{ tamanho }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="tamanho"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Idade</h3>
+                <ion-radio-group [(ngModel)]="idadeSelecionada">
+                  <ion-item style="--background:none; color: #1E1E1E;"
+                    *ngFor="let idade of ['Filhote', 'Adulto', 'Idoso', 'Todos']">
+                    <ion-label>{{ idade }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="idade"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Situação</h3>
+                <ion-radio-group [(ngModel)]="situacaoSelecionada">
+                  <ion-item style="--background:none; color: #1E1E1E;"
+                    *ngFor="let situacao of ['Disponível', 'Adotado', 'Todos']">
+                    <ion-label>{{ situacao }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="situacao"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+    
+              <ion-button expand="block" class="botao-adicionar" (click)="confirm()">Aplicar filtros</ion-button>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+    
+        <div id="pets" *ngFor="let animal of dadosListagem">
+          <ion-card *ngIf="animal.status == 'disponivel'; else petIndisponivel">
+            <ion-card-header class="status-pet-disponivel">
+              <ion-card-title >DISPONÍVEL</ion-card-title>
+            </ion-card-header>
+            
+            <ion-card-content>
+              <img src="../../assets/gato-2.png" alt="">
+              <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
+              <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
+              <ul class="infos-pet">
+                <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+                <br>
+                <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
+                <br>
+                <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
+              </ul>
+              <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
+            </ion-card-content>
+          </ion-card>
+    
+          <ng-template #petIndisponivel>
+            <ion-card>
+            <ion-card-header class="status-pet-indisponivel">
+              <ion-card-title >INDISPONÍVEL</ion-card-title>
+            </ion-card-header>
+            
+            <ion-card-content>
+              <img src="../../assets/gato-2.png" alt="">
+              <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
+              <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
+              <ul class="infos-pet">
+                <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+                <br>
+                <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
+                <br>
+                <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
+              </ul>
+              <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
+            </ion-card-content>
+          </ion-card>
+          </ng-template>
+        </div>
+    
+        </div>
+      
+      <ng-template #verDoadores>
+        <h1>Doadores disponíveis</h1>
+
+        <button id="btn-filtro-doadores"><span>Filtros</span><span><lucide-icon name="list-filter"></lucide-icon></span></button>
+
+        <ion-modal trigger="btn-filtro-doadores" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-toolbar style="--background: white;">
+              <ion-title slot="start" style="color: #512454;">Filtrar</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="cancel()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                    [size]="16"></lucide-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+    
+            <ion-content class="ion-padding" style="--background: white;">
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Tipo</h3>
+                <ion-radio-group [(ngModel)]="tipoDoadorSelecionado">
+                  <ion-item style="--background:none; color: #1E1E1E;"
+                    *ngFor="let tipoDoador of ['Todos', 'Pessoa Comum', 'Instituição']">
+                    <ion-label>{{ tipoDoador }}</ion-label>
+                    <ion-radio style="--color: #512454;" slot="start" [value]="tipoDoador"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Estado</h3>
+                <ion-select style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+                  placeholder="Selecionar" [(ngModel)]="estadoSelecionado">
+                  <ion-select-option
+                    style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+                    *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
+                </ion-select>
+              </div>
+    
+              <div class="campo-filtro">
+                <h3 class="titulo-filtro">Cidade</h3>
+                <ion-item class="input-filtro">
+                  <ion-input placeholder="Informe a cidade" [(ngModel)]="cidade"></ion-input>
+                  <ion-icon style="color: #512454;" slot="end" name="search-outline"></ion-icon>
+                </ion-item>
+              </div>
+              
+              <ion-button expand="block" class="botao-adicionar" (click)="confirm()">Aplicar filtros</ion-button>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+
+        <div id="doadores" *ngFor="let doador of dadosListagem">
+          <ion-card>
+            <ion-card-content>
+              <img src="../../assets/gato-2.png" alt="">
+              <ion-card-title>{{ doador.nome_completo }}</ion-card-title>
+              <ul class="infos-pet">
+                <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+                <br>
+                <li><img src="../../assets/check_circle.png" alt="">Doações concluídas: <strong style="color: #512454;"> 0</strong></li>
+              </ul>
+              <ion-button [routerLink]="">Ver detalhes</ion-button>
+            </ion-card-content>
+          </ion-card>
+
+        </div>
+
+        
+
+
+      </ng-template>
+  </ion-content>
+  
+  
+
+
+</div>
+
