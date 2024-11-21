@@ -1,0 +1,209 @@
+ion-toolbar{
+    --background: #fff;
+    --color: #87138F;
+}
+ 
+#conteudo-menu{
+    --background: #512454;
+    padding-top: 30px;
+  
+  }
+.card-perfil-menu{
+    justify-content: center;
+    background-color: #512454;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    display: flex;
+    padding: 4px 12px;
+    align-items: center;
+    width: 90%;
+    margin: auto auto;
+  }
+  
+  button.card-perfil-menu{
+    gap: 4px;
+    padding: 2px 6px;
+    bottom: 8%;
+    right: auto;
+    left: 5%;
+  }
+  
+  .card-perfil-menu img{
+    width: 30%;
+    height: 30%;
+  
+  }
+  
+  .card-perfil-menu div{
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  
+  .card-perfil-menu div a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  
+  .card-perfil-menu div h4{
+    margin: 0;
+  }
+  
+
+#conteudo-principal{
+    --background: #D6E1FF;
+    text-align: center;
+    --color:#fff;
+    padding-top: 30px;
+}
+
+#box-animal{
+    background-color: #FFFFFF;
+    color: #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+    border-radius: 12px;
+    margin: 10px auto;
+    padding: 18px;
+    justify-content: center;
+    text-align: center;
+}
+
+#box-animal img{
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+}
+#box-animal h1{
+    margin-bottom: 0px;
+}
+#box-animal h3{
+    margin-top: 10px;
+}
+
+#box-animal strong, lucide-icon{
+    color: #87138F;
+}
+.botao-vazio{
+    border: 2px solid #87138F;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-weight: 700;
+    color: #87138F;
+    font-size: 0.75rem;
+    background-color: rgba($color: #87138F, $alpha: 0.11);
+    text-decoration: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.botao-cheio{
+    border: 2px solid #87138F;
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background-color: #87138F;
+}
+
+ul.infos-pet{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  
+  
+  ul.infos-pet li{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+  }
+  .nota-azul{
+    background-color: #D6E1FF;
+    width: 60%;
+    margin: 0px auto;
+    padding: 4px 6px;
+  }
+
+  #box-animal button{
+    width: 80%;
+    margin: 10px auto;
+    background-color: #512454;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+
+.card{
+    width: 80%;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
+.card-header{
+    background-color: #87138F;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 4px 4px 0px 0px;
+    padding: 6px 8px;
+
+}
+
+.card-content{
+    color: #87138F;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    display: flex;
+    padding: 4px 12px;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.card-content span{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.card-content img{
+    width: 30%;
+    height: 30%;
+  
+  }
+  
+  .card-content div{
+    text-align: left;
+    padding-left: 10px;
+  }
+  
+  
+  .card-content div a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    
+    color: #87138F;;
+  }
+  
+  
+  .card-content div h4{
+    margin: 0;
+  }

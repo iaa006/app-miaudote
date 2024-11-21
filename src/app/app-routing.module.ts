@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'redefinir-senha',
     loadChildren: () => import('./redefinir-senha/redefinir-senha.module').then( m => m.RedefinirSenhaPageModule)
   },
+  {
+    path: 'perfil-animal/:id',
+    loadChildren: () => import('./perfil-animal/perfil-animal.module').then( m => m.PerfilAnimalPageModule)
+  },
 ];
 
 @NgModule({

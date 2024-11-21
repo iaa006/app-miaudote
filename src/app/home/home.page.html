@@ -149,7 +149,7 @@
                 <br>
                 <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
               </ul>
-              <ion-button>Ver detalhes</ion-button>
+              <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
             </ion-card-content>
           </ion-card>
     
@@ -170,7 +170,7 @@
                 <br>
                 <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
               </ul>
-              <ion-button >Ver detalhes</ion-button>
+              <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
             </ion-card-content>
           </ion-card>
           </ng-template>
@@ -240,7 +240,7 @@
                 <br>
                 <li><img src="../../assets/check_circle.png" alt="">Doações concluídas: <strong style="color: #512454;"> 0</strong></li>
               </ul>
-              <ion-button>Ver detalhes</ion-button>
+              <ion-button [routerLink]="">Ver detalhes</ion-button>
             </ion-card-content>
           </ion-card>
 

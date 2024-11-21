@@ -67,6 +67,7 @@ export class HomePage implements OnInit{
     this.apiServices.getDoadores().subscribe((data: any) =>{
       this.dadosListagem = data;
       console.log(data)
+      console.log(this.apiServices.authToken)
     })
   }
 

@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
+  public authToken : string = '';
+  public infoUsuario : any;
 
   constructor(private http:HttpClient) { }
 
@@ -33,4 +35,12 @@ export class ApiService {
   alterarSenha(novosDados:any){
     return this.http.put(`http://127.0.0.1:8000/api/redefinir_senha/`, novosDados)
   }
+
+  getAnimalUnico(id:any){
+    return this.http.get(`http://127.0.0.1:8000/api/animal/${id}`)
+  }
+  getSolicitacoesAnimal(id_animal: any){
+    return this.http.get(`http://`)
+  }
+
 }
