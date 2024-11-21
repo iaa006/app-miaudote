@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
-
+import { StorageService } from '../services/storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,13 +11,12 @@ import { Router } from '@angular/router';
 export class LoginPage {
   usuario: string = '';
   senha: string = '';
-  private token : string='';
   private retornoLogin : any;
 
-  constructor(private apiServices:ApiService, private router: Router) {}
+  constructor(private apiServices:ApiService, private router: Router, private storageServices : StorageService) {}
 
   async postLogin(){
-    const data :any = await this.apiServices.postLogin({id_user: this.usuario, senha: this.senha}).toPromise()
+    const data :any = await this.apiServices.postLogin({nome_usuario: this.usuario, password: this.senha}).toPromise()
     this.retornoLogin = data;
   }
 
@@ -25,8 +24,9 @@ export class LoginPage {
     await this.postLogin();
     console.log(this.retornoLogin)
     if(this.retornoLogin.token){
-      this.apiServices.authToken = this.retornoLogin.token;
-      this.apiServices.infoUsuario = this.retornoLogin.usuario;
+      this.storageServices.set('token', this.retornoLogin.token)
+      console.log(this.storageServices.get('token'))
+      this.storageServices.set('usuario', this.retornoLogin.usuario)
       this.router.navigate(['/home'])
     }
   }

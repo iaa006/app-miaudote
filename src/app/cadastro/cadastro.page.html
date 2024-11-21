@@ -14,7 +14,7 @@
       <p>Insira seus dados para criar uma nova conta</p>
       <ion-item>
         <ion-label position="floating">*Informe seu nome completo</ion-label>
-        <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+        <ion-input type="text" formControlName="nome_completo" placeholder="Nome completo"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -29,7 +29,7 @@
 
       <ion-item>
         <ion-label>*Informe seu tipo de Cadastro</ion-label>
-        <ion-radio-group formControlName="tipoCadastro">
+        <ion-radio-group formControlName="tipo_usuario">
           <ion-item>
             <ion-label>CPF</ion-label>
             <ion-radio slot="start" value="cpf"></ion-radio>
@@ -42,7 +42,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-input type="text" formControlName="documento" placeholder="CPF/CNPJ"></ion-input>
+        <ion-input type="text" formControlName="id_user" placeholder="CPF/CNPJ"></ion-input>
       </ion-item>
 
       <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
@@ -103,18 +103,18 @@
       <p class="subtitulo">Insira seus dados para criar uma nova conta</p>
       <ion-item>
         <ion-label position="floating">*Informe seu nome de usuário</ion-label>
-        <ion-input formControlName="usuario" placeholder="Usuário"></ion-input>
+        <ion-input formControlName="nome_usuario" placeholder="Usuário"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">*Crie sua senha</ion-label>
-        <ion-input formControlName="senha" placeholder="Senha"></ion-input>
+        <ion-input formControlName="password" placeholder="Senha"></ion-input>
         <ion-icon name="eye-outline" slot="end"></ion-icon>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">*Confirme sua senha</ion-label>
-        <ion-input formControlName="confirmarSenha" type="password" placeholder="Confirmar senha"></ion-input>
+        <ion-input formControlName="confirmarPassword" type="password" placeholder="Confirmar senha"></ion-input>
         <ion-icon slot="end" name="eye-off" (click)="toggleSenhaVisivel()"></ion-icon>
       </ion-item>
 
@@ -135,12 +135,12 @@
       <p class="subtitulo">Insira seus dados bancários para receber doações (opcional)</p>
       <ion-item>
         <ion-label position="floating">Informe sua agência</ion-label>
-        <ion-input formControlName="agencia" type="text" placeholder="Agência"></ion-input>
+        <ion-input formControlName="agencia_bancaria" type="text" placeholder="Agência"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Informe sua conta</ion-label>
-        <ion-input formControlName="conta" type="text" placeholder="Conta"></ion-input>
+        <ion-input formControlName="conta_bancaria" type="text" placeholder="Conta"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -150,7 +150,7 @@
 
       <ion-item>
         <ion-label position="floating">Informe sua chave pix</ion-label>
-        <ion-input formControlName="chavePix" type="text" placeholder="Pix"></ion-input>
+        <ion-input formControlName="chave_pix" type="text" placeholder="Pix"></ion-input>
       </ion-item>
 
       <div class="button-group">

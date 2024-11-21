@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -20,13 +22,13 @@ export class CadastroPage {
     'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins',
   ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private apiServices : ApiService, private router : Router) {
     this.cadastroForm = this.formBuilder.group({
-      nome: [''],
+      nome_completo: [''],
       email: [''],
       telefone: [''],
-      tipoCadastro: [''],
-      documento: [''], 
+      tipo_usuario: [''],
+      id_user: [''], 
     });
 
     this.enderecoForm = this.formBuilder.group({
@@ -38,16 +40,16 @@ export class CadastroPage {
     });
 
     this.usuarioForm = this.formBuilder.group({
-      usuario: [''],
-      senha: [''],
-      confirmarSenha: [''],
+      nome_usuario: [''],
+      password: [''],
+      confirmarPassword: [''],
     });
 
     this.bancarioForm = this.formBuilder.group({
-      agencia: [''],
-      conta: [''],
+      agencia_bancaria: [''],
+      conta_bancaria: [''],
       responsavel: [''],
-      chavePix: [''],
+      chave_pix: [''],
     });
   }
 
@@ -72,14 +74,41 @@ export class CadastroPage {
   }
 
   finalizarCadastro() {
-    const cadastroCompleto = {
+    let cadastroCompleto = {
       ...this.cadastroForm.value,
       ...this.enderecoForm.value,
       ...this.usuarioForm.value,
       ...this.bancarioForm.value,
+      foto : null,
+      descricao : null,
+
+      is_staff: false,
+      is_superuser: false,
     };
 
+    if(cadastroCompleto.tipo_usuario === 'cpf'){
+      cadastroCompleto.tipo_usuario = 'PF'
+    }
+    if(cadastroCompleto.tipo_usuario === 'cnpj'){
+      cadastroCompleto.tipo_usuario = 'PJ'
+    }
+
+    for (let key in cadastroCompleto) {
+      if (cadastroCompleto.hasOwnProperty(key)) {
+        if (cadastroCompleto[key] === "") {
+          cadastroCompleto[key] = null; 
+        }
+      }
+    }
+
+    delete cadastroCompleto.confirmarPassword
+
+    this.apiServices.postCadastro(cadastroCompleto).subscribe((data) =>{
+      console.log(data)
+    })
+    this.router.navigate(['/login']);
     console.log('Cadastro finalizado:', cadastroCompleto);
     alert('Cadastro concluído com sucesso!');
   }
 }
+
