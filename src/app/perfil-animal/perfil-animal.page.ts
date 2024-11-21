@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PerfilAnimalPage implements OnInit {
   id : number = 1;
-  dadosAnimal : any[] = [];
+  dadosAnimal : any;
   dadosSolicitacoes : any[] = [];
   constructor(private apiServices : ApiService, private route: ActivatedRoute) { }
 
@@ -27,6 +27,7 @@ export class PerfilAnimalPage implements OnInit {
     console.log(this.id)
     this.apiServices.getAnimalUnico(this.id).subscribe((data: any) =>{
       this.dadosAnimal = data;
+      console.log(this.dadosAnimal)
     })
   }
   getSolicitacoes(){
