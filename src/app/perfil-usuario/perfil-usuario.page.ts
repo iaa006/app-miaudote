@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ApiService } from '../services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -26,6 +28,7 @@ export class PerfilUsuarioPage {
   tamanhoSelecionado: string = '';
   idadeSelecionada: string = '';
   situacaoSelecionada: string = '';
+  id: any;
 
 
   cancel() {
@@ -53,4 +56,13 @@ export class PerfilUsuarioPage {
     }
   }
 
+  constructor(private apiServices : ApiService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.params.subscribe( parametros => {
+      if (parametros['id']) {
+        this.id = parametros['id']
+      }
+    });
+}
 }
