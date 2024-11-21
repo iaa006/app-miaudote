@@ -1,3 +1,14 @@
+.menu-topo {
+  display: flex;
+  gap: 24px;
+  padding-left: 16px;
+  background-color: white;
+}
+
+.logo-miaudote {
+  max-width: 220px;
+}
+
 ion-toolbar{
     --background: #fff;
     --color: #87138F;
@@ -234,4 +245,29 @@ ul.infos-pet{
 
 .botao-editar:hover {
   --background: #87138F;
+}
+
+.botoes {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.botao-adicionar {
+  --background: #87138F;
+  color: white;
+  font-weight: 600;
+}
+
+.botao-adicionar:hover {
+  --background: #512454;
+}
+
+.botao-cancelar {
+  --background: #FCE5FE;
+  color: #87138F;
+  border: solid 2px #87138F;
+  font-weight: 600;
+  --border-radius: 4px;
+  border-radius: 4px;
 }

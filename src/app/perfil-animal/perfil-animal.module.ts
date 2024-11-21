@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LucideAngularModule, ArrowUpRight, ArrowRight, LogOut, Phone, Mail, CircleCheck, MapPin, TriangleAlert, PawPrint} from 'lucide-angular';
+import { LucideAngularModule, ArrowUpRight, ArrowRight, LogOut, Phone, Mail, CircleCheck, MapPin, TriangleAlert, PawPrint, Menu} from 'lucide-angular';
 
 
 import { IonicModule } from '@ionic/angular';
@@ -16,7 +16,7 @@ import { PerfilAnimalPage } from './perfil-animal.page';
     FormsModule,
     IonicModule,
     PerfilAnimalPageRoutingModule,
-    LucideAngularModule.pick({ ArrowRight, ArrowUpRight, LogOut, Phone, Mail, CircleCheck, MapPin, TriangleAlert, PawPrint}),
+    LucideAngularModule.pick({ ArrowRight, ArrowUpRight, LogOut, Phone, Mail, CircleCheck, MapPin, TriangleAlert, PawPrint, Menu}),
 
   ],
   declarations: [PerfilAnimalPage]
