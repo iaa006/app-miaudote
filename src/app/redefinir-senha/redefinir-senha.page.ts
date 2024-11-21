@@ -20,6 +20,7 @@ export class RedefinirSenhaPage implements OnInit {
 
   async verificarUsuario() {
     const data: any = await this.apiServices.getExisteUsuario(this.idUsuario).toPromise();
+    console.log(data)
     this.existeUsuario = data.usuario;
   }
   

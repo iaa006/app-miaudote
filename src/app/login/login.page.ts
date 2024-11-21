@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,36 +11,25 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage {
   usuario: string = '';
   senha: string = '';
+  private token : string='';
+  private retornoLogin : any;
 
-  constructor(private alertController: AlertController) {}
+  constructor(private alertController: AlertController, private apiServices:ApiService, private router: Router) {}
 
-  async login() {
-    if (this.usuario === 'admin' && this.senha === '123456') {
-      const alertaSucesso = await this.alertController.create({
-        header: 'Bem-vindo!',
-        message: 'Login realizado com sucesso.',
-        buttons: ['OK'],
-      });
-      await alertaSucesso.present();
-    } else {
-      const alertaErro = await this.alertController.create({
-        header: 'Erro',
-        message: 'Usuário ou senha inválidos.',
-        buttons: ['Tentar novamente'],
-      });
-      await alertaErro.present();
+  async postLogin(){
+    const data :any = await this.apiServices.postLogin({id_user: this.usuario, senha: this.senha}).toPromise()
+    this.retornoLogin = data;
+  }
+
+  async logar(){
+    await this.postLogin();
+    console.log(this.retornoLogin)
+    if(this.retornoLogin.token){
+      this.apiServices.authToken = this.retornoLogin.token;
+      this.router.navigate(['/home'])
     }
+    console.log(this.apiServices.authToken)
   }
-
-  async esqueciSenha() {
-    const alertaEsqueciSenha = await this.alertController.create({
-      header: 'Esqueci a senha',
-      message: 'Por favor, entre em contato com o suporte para redefinir sua senha.',
-      buttons: ['OK'],
-    });
-    await alertaEsqueciSenha.present();
-  }
-
   cadastrar() {
     console.log('Redirecionar para tela de cadastro');
   }
