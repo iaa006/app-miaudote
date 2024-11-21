@@ -109,3 +109,59 @@ ion-item {
     border-radius: 12px;
     margin: 16px 0px;
 }
+
+ion-card{
+    --background: #fff;
+    --color:#1E1E1E;
+    text-align: center;
+  }
+  
+  ion-card img{
+    border-radius: 50%;
+  }
+  
+  ion-card-content ion-card-title{
+    --color: #87138F;
+  }
+  
+  ion-card-content ion-card-subtitle{
+    --color: #1E1E1E;
+  }
+  
+  ion-card a{
+  
+    --background: #512454;
+    --color: #fff;
+    text-transform: none;
+    font-weight: bold;
+  }
+  
+  ul.infos-pet{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  
+  
+  ul.infos-pet li{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+  }
+  .status-pet-disponivel{
+    --background: #06A462;
+    font-weight: 800;
+  }
+  
+  
+  .status-pet-indisponivel{
+    --background: #CB0307;
+    font-weight: 800;
+  }
+    

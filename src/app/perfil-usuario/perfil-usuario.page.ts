@@ -29,7 +29,9 @@ export class PerfilUsuarioPage {
   idadeSelecionada: string = '';
   situacaoSelecionada: string = '';
   id: any;
-
+  dadosUsuario : any;
+  usuarioLogadoeDoador : boolean = false;
+  animaisUsuario : any;
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -63,6 +65,31 @@ export class PerfilUsuarioPage {
       if (parametros['id']) {
         this.id = parametros['id']
       }
+
+    this.usuarioLogadoEDoador();
+    this.getAnimaisDoador()
+    console.log(this.apiServices.infoUsuario)
     });
 }
+  async getDadosUsuario(){
+    const data :any = await this.apiServices.getDoadorUnico(this.id).toPromise()
+    this.dadosUsuario = data;
+  }
+
+  async usuarioLogadoEDoador(){
+    await this.getDadosUsuario()
+    console.log(this.apiServices.infoUsuario.id_user)
+    if(this.apiServices.infoUsuario.id_user === this.dadosUsuario.id_user){
+      this.usuarioLogadoeDoador = true;
+    }  
+  }
+
+  getAnimaisDoador(){
+    this.apiServices.getAnimaisDoador(this.id).subscribe(
+      (data)=>{
+        this.animaisUsuario = data;
+      }
+    )
+  }
+
 }

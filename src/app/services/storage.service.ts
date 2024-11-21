@@ -23,7 +23,13 @@ export class StorageService {
     this._storage?.set(key, value);
   }
 
-  public get(key: string){
+  public get(key: string) {
     return this._storage?.get(key)
+      .then(value => {
+        return value;  
+      })
+      .catch(error => {
+        throw error;  
+      });
   }
 }

@@ -236,11 +236,11 @@
               <img src="../../assets/gato-2.png" alt="">
               <ion-card-title>{{ doador.nome_completo }}</ion-card-title>
               <ul class="infos-pet">
-                <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+                <li><img src="../../assets/map-pin.png" alt="">{{ doador.cidade}} - {{ doador.estado }}</li>
                 <br>
                 <li><img src="../../assets/check_circle.png" alt="">Doações concluídas: <strong style="color: #512454;"> 0</strong></li>
               </ul>
-              <ion-button [routerLink]="">Ver detalhes</ion-button>
+              <ion-button [routerLink]="['/perfil-usuario', doador.id_user]">Ver detalhes</ion-button>
             </ion-card-content>
           </ion-card>
 

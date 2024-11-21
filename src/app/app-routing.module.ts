@@ -35,7 +35,10 @@ const routes: Routes = [
     path: 'atualizar-animal',
     loadChildren: () => import('./atualizar-animal/atualizar-animal.module').then( m => m.AtualizarAnimalPageModule)
   },
-
+  {
+    path: 'cadastrar-animal',
+    loadChildren: () => import('./cadastrar-animal/cadastrar-animal.module').then( m => m.CadastrarAnimalPageModule)
+  },
 ];
 
 @NgModule({

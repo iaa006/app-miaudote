@@ -11,17 +11,17 @@ export class ApiService {
   private url_base : string = 'http://127.0.0.1:8000/api/';
   constructor(private http:HttpClient, private storage : StorageService) { }
 
+  
+  
   getAnimais(){
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
-  });
-  console.log(this.storage.get('token'))
-    return this.http.get(`${this.url_base}animais/`, { headers: httpHeaders })
+    return this.http.get(`${this.url_base}animais/`)
   }
+
+  
   getDoadores(){
     const httpHeaders: HttpHeaders = new HttpHeaders({
       Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
-  });
+    });
     return this.http.get(`${this.url_base}usuarios/`, { headers: httpHeaders })
   }
   getAnimaisFiltrados(sexo:string, especie:string, estado:string, cidade:string, tamanho:string, idade:string, situacao:string,){
@@ -51,11 +51,30 @@ export class ApiService {
     return this.http.get(`http://`)
   }
 
+  getDoadorUnico(id:any){
+    return this.http.get(`${this.url_base}usuario/${id}`)
+  }
+
+  getAnimaisDoador(id:any){
+    return this.http.get(`${this.url_base}animais/doador/${id}`)
+  }
+
+  getAnimaisDoadorFiltrado(id:any, sexo:string, especie:string, estado:string, cidade:string, tamanho:string, idade:string, situacao:string,){
+    return this.http.get(`${this.url_base}animais/doador/${id}?sexo=${sexo}&especie=${especie}&idade=${idade}&status=${situacao}`)
+  }
+
   postLogin(dadosLogin:any){
     return this.http.post(`${this.url_base}login/`, dadosLogin)
   }
 
   postCadastro(dadosCadastro:any){
     return this.http.post(`${this.url_base}cadastrar/`, dadosCadastro)
+  }
+
+  deleteUsuario(id:any){
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
+    });
+    return this.http.delete(`${this.url_base}usuario/${id}`, { headers: httpHeaders })
   }
 }

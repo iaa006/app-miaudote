@@ -15,19 +15,19 @@
         style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center;">
         <img src="../../assets/igor.png" alt="Foto de Perfil do Usuário" width="200px" style="border-radius: 50%;">
         <div class="ion-text-center" style="display: flex; flex-direction: column; gap: 4px; margin: 8px 0px;">
-          <ion-card-title style="color: #512454; font-weight: 600;">Igão Foguete</ion-card-title>
-          <ion-card-subtitle style="color: #512454">&#64;igaofoguete_</ion-card-subtitle>
+          <ion-card-title style="color: #512454; font-weight: 600;">{{ dadosUsuario.nome_completo }}</ion-card-title>
+          <ion-card-subtitle style="color: #512454">&#64;{{ dadosUsuario.nome_usuario }}</ion-card-subtitle>
         </div>
         <div style="display: flex; flex-direction: column; gap: 4px; justify-content: start;">
 
           <div style="display: flex; gap: 8px;"><lucide-icon name="phone" class="my-icon icone-perfil"
               [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">(89) 4002-8922</h3>
+            <h3 style="color: #1E1E1E">{{ dadosUsuario.telefone }}</h3>
           </div>
 
           <div style="display: flex; gap: 8px;"><lucide-icon name="mail" class="my-icon icone-perfil"
               [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">igaofoguete&#64;gmail.com</h3>
+            <h3 style="color: #1E1E1E">{{ dadosUsuario.email }}</h3>
           </div>
 
           <div style="display: flex; gap: 8px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
@@ -43,23 +43,26 @@
               <h3 style="color: #87138F; font-weight: 600;">Endereço</h3>
             </div>
             <p style="color: #1E1E1E;">
-              Rua Fulano de tal - Bairro tal -Barão de Grajaú (MA)
+              {{ dadosUsuario.logradouro }} - {{ dadosUsuario.cidade }} ({{ dadosUsuario.estado }})
             </p>
           </div>
 
           <div style="background-color: #D6E1FF; padding: 4px 8px 8px 8px;" class="ion-text-center">
             <h3 style="color: #87138F; font-weight: 600;">Descrição</h3>
             <p style="color: #1E1E1E;">
-              Igão é um cara muito gente fina.
+              {{ dadosUsuario.descricao }}
             </p>
           </div>
 
         </div>
 
-        <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
-        <ion-button class="botao-editar" style="width: 100%;">Editar perfil</ion-button>
-        <ion-button class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
-        <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
+        <span *ngIf="usuarioLogadoeDoador">
+          <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
+          <ion-button class="botao-editar" style="width: 100%;">Editar perfil</ion-button>
+          <ion-button class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
+          <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
+        </span>
+        
 
       </ion-card-content>
     </ion-card>
@@ -71,8 +74,10 @@
     <div class="ion-text-center">
       <h2 style="font-weight: 700; color: #512454;">Pets deste usuário</h2>
 
+      <span *ngIf="usuarioLogadoeDoador">
       <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
-      <ion-button class="botao-adicionar">Adicionar animal</ion-button>
+      <ion-button class="botao-adicionar" [routerLink]="['/cadastrar-animal']">Adicionar animal</ion-button>
+      </span>
     </div>
     <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
 
@@ -174,44 +179,50 @@
       </ng-template>
     </ion-modal>
 
-    <ion-card class="card">
+    <span *ngFor="let animal of animaisUsuario.animais">
+      <ion-card *ngIf="animal.status == 'disponivel'; else petIndisponivel">
+        <ion-card-header class="status-pet-disponivel">
+          <ion-card-title >DISPONÍVEL</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <img src="../../assets/gato-2.png" alt="">
+          <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
+          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
+          <ul class="infos-pet">
+            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
+          </ul>
+          <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
+        </ion-card-content>
+      </ion-card>
 
-      <!-- Se o animal não tiver sido adotado, fica verde, se não fica vermelho -->
-      <ion-card-header class="status-pet">
-        <ion-card-title style="color: white; font-weight: 600;">DISPONÍVEL</ion-card-title>
-      </ion-card-header>
-      <!-- Se o animal não tiver sido adotado, fica verde, se não fica vermelho -->
-
-      <ion-card-content
-        style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center; padding: 16px;">
-        <img src="../../assets/gato-2.png" alt="Foto de Perfil do Usuário" width="200px" style="border-radius: 50%;">
-        <div class="ion-text-center" style="display: flex; flex-direction: column; gap: 4px; margin: 8px 0px;">
-          <ion-card-title style="color: #512454; font-weight: 600;">Frederico</ion-card-title>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 4px; justify-content: start;">
-
-          <div style="display: flex; gap: 4px;"><lucide-icon name="map-pin" class="my-icon icone-perfil"
-              [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">Xique-Xique/BA</h3>
-          </div>
-
-          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
-              [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">Macho</h3>
-          </div>
-
-          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
-              [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">Filhote</h3>
-          </div>
-
-        </div>
-
-        <ion-button class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
-
-      </ion-card-content>
-    </ion-card>
-    <!-- Essa parte só aparece se o perfil possuir animais cadastrados -->
+      <ng-template #petIndisponivel>
+        <ion-card>
+        <ion-card-header class="status-pet-indisponivel">
+          <ion-card-title >INDISPONÍVEL</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <img src="../../assets/gato-2.png" alt="">
+          <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
+          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
+          <ul class="infos-pet">
+            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
+            <br>
+            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
+          </ul>
+          <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
+        </ion-card-content>
+      </ion-card>
+      </ng-template>
+    </span>
+    
 
     <!-- Caso o usuário não possua animais cadastrados -->
     <span style="color: #512454; font-weight: 500; display: none;">Este usuário não possui animais para doação</span>
