@@ -180,3 +180,13 @@ ion-item {
   --highlight-color-focused: transparent;
 }
 
+.botao-confirmar {
+  --background: #87138F;
+  color: white;
+  font-weight: 600;
+}
+
+.botao-confirmar:hover {
+  --background: #512454;
+}
+
