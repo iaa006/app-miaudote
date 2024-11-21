@@ -25,12 +25,12 @@
 }
 
 .campo-forms {
-    padding: 8px 0px;
+    padding: 8px;
 }
 
 
 .titulo-forms {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     color: #512454;
     margin-bottom: 8px;
@@ -45,31 +45,11 @@
     --border-width: 0px;
 }
 
-.input-forms ion-textarea {
-    font-size: 14px;
-}
-
 ion-item {
     --inner-border-width: 0px;
     --highlight-color-focused: transparent;
 }
 
-.botoes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin: 8px 0px;
-}
-
-.botao-foto {
-    --background: #e1e4fa;
-    color: #585e8e;
-    border: solid 3px #777DAA;
-    font-weight: 600;
-    --border-radius: 4px;
-    border-radius: 4px;
-}
 .botao-cancelar {
     --background: #FCE5FE;
     color: #87138F;
@@ -78,6 +58,76 @@ ion-item {
     --border-radius: 4px;
     border-radius: 4px;
 }
+
+
+.input-wrapper {
+    padding: 6px 6px 4px 6px;
+    gap: 8px;
+    border: 2px solid #777DAA;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    font-size: 14px;
+}
+
+.input-wrapper input {
+    background-color: white;
+    padding: 0;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+
+.input-wrapper .lucide-icon {
+    color: #777DAA;
+    padding-bottom: -6px;
+
+}
+
+.campo-input {
+    padding: 4px 0px;
+}
+
+.titulo-input {
+    font-size: 14px;
+    font-weight: normal;
+    color: #512454;
+    margin-bottom: 8px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.input-form {
+    --background: white;
+    color: #512454;
+    border: solid 2px #512454;
+    --border-width: 0px;
+    font-size: 14px;
+}
+
+
+.select-estado {
+    --background: white;
+    color: #54597d;
+    border: 2px solid #777DAA;
+    --placeholder-color: #595e86;
+    font-size: 14px;
+}
+
+.option-estado {
+    color: #565b84;
+    --background: white;
+}
+
+.botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
 
 .botao-confirmar {
     --background: #87138F;
@@ -89,6 +139,35 @@ ion-item {
     --background: #512454;
 }
 
+.botao-foto {
+    --background: #e1e4fa;
+    color: #585e8e;
+    border: solid 3px #777DAA;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+.botao-editar {
+    --background: #512454;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-editar:hover {
+    --background: #87138F;
+}
+
+
+.botao-excluir {
+    --background: #FFDADB;
+    color: #AE0003;
+    border: solid 3px #AE0003;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
 
 .image-preview {
     display: flex;
@@ -133,43 +212,4 @@ ion-item {
     background: none;
     border: none;
     cursor: pointer;
-}
-
-
-.icone-perfil {
-    width: 16px;
-}
-
-ion-item {
-    --inner-border-width: 0px;
-    --highlight-color-focused: transparent;
-}
-
-.input-wrapper {
-    padding: 6px 6px 4px 6px;
-    gap: 8px;
-    border: 2px solid #777DAA;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    font-size: 14px;
-}
-
-.input-wrapper input {
-    background-color: white;
-    padding: 0;
-    outline: none;
-    border: none;
-    font-size: 14px;
-}
-
-.input-wrapper .lucide-icon {
-    color: #777DAA;
-    padding-bottom: -6px;
-
-}
-
-.campo-input {
-    padding: 4px 0px;
 }

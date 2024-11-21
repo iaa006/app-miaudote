@@ -22,6 +22,14 @@ const routes: Routes = [
     path: 'cadastrar-animal',
     loadChildren: () => import('./cadastrar-animal/cadastrar-animal.module').then( m => m.CadastrarAnimalPageModule)
   },
+  {
+    path: 'atualizar-usuario',
+    loadChildren: () => import('./atualizar-usuario/atualizar-usuario.module').then( m => m.AtualizarUsuarioPageModule)
+  },
+  {
+    path: 'atualizar-animal',
+    loadChildren: () => import('./atualizar-animal/atualizar-animal.module').then( m => m.AtualizarAnimalPageModule)
+  },
 
 ];
 

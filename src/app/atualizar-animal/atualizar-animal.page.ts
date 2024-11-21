@@ -4,17 +4,16 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { IonModal } from '@ionic/angular';
 
 @Component({
-  selector: 'app-cadastrar-animal',
-  templateUrl: './cadastrar-animal.page.html',
-  styleUrls: ['./cadastrar-animal.page.scss'],
+  selector: 'app-atualizar-animal',
+  templateUrl: './atualizar-animal.page.html',
+  styleUrls: ['./atualizar-animal.page.scss'],
 })
-export class CadastrarAnimalPage {
+export class AtualizarAnimalPage {
   constructor(private router: Router) { }
 
   selectedImage: string | null = null;
 
   @ViewChild('editFotoModal') editFotoModal!: IonModal;
-
 
   nomeAnimal: string = '';
   especieSelecionada: string = '';
@@ -56,8 +55,17 @@ export class CadastrarAnimalPage {
     }
   }
 
-  navegacaoPerfil() {
-    this.router.navigate(['/perfil-usuario']);
+  saveEditData() {
+    console.log('Atualizado...');
+    //funcionalidade pra dar o update
+
+    this.router.navigate(['/perfil-animal']);
+
   }
+
+  cancelEdit() {
+    this.router.navigate(['/perfil-animal']);
+  }
+
 
 }

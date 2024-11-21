@@ -1,4 +1,3 @@
-
 .conteudo {
     --ion-background-color: #D6E1FF;
 }
@@ -18,18 +17,53 @@
     color: #87138F;
 }
 
-.card {
+#container {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.icone-perfil {
+    width: 16px;
+}
+
+ion-item {
+    --inner-border-width: 0px;
+    --highlight-color-focused: transparent;
+}
+
+.input-wrapper {
+    padding: 6px 6px 4px 6px;
+    gap: 8px;
+    border: 2px solid #777DAA;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
     background-color: white;
-    max-width: 280px;
-    margin: 0 auto 24px auto;
+    font-size: 14px;
 }
 
-.campo-forms {
-    padding: 8px 0px;
+.input-wrapper input {
+    background-color: white;
+    padding: 0;
+    outline: none;
+    border: none;
+    font-size: 14px;
 }
 
+.input-wrapper .lucide-icon {
+    color: #777DAA;
+    padding-bottom: -6px;
 
-.titulo-forms {
+}
+
+.campo-input {
+    padding: 4px 0px;
+}
+
+.titulo-input {
     font-size: 14px;
     font-weight: normal;
     color: #512454;
@@ -38,20 +72,26 @@
     padding-top: 0px;
 }
 
-.input-forms {
+.input-form {
     --background: white;
     color: #512454;
-    border: solid 2px #777DAA;
+    border: solid 2px #512454;
     --border-width: 0px;
-}
-
-.input-forms ion-textarea {
     font-size: 14px;
 }
 
-ion-item {
-    --inner-border-width: 0px;
-    --highlight-color-focused: transparent;
+
+.select-estado {
+    --background: white;
+    color: #54597d;
+    border: 2px solid #777DAA;
+    --placeholder-color: #595e86;
+    font-size: 14px;
+}
+
+.option-estado {
+    color: #565b84;
+    --background: white;
 }
 
 .botoes {
@@ -59,17 +99,9 @@ ion-item {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    margin: 8px 0px;
+    margin-top: 12px;
 }
 
-.botao-foto {
-    --background: #e1e4fa;
-    color: #585e8e;
-    border: solid 3px #777DAA;
-    font-weight: 600;
-    --border-radius: 4px;
-    border-radius: 4px;
-}
 .botao-cancelar {
     --background: #FCE5FE;
     color: #87138F;
@@ -89,6 +121,35 @@ ion-item {
     --background: #512454;
 }
 
+.botao-foto {
+    --background: #e1e4fa;
+    color: #585e8e;
+    border: solid 3px #777DAA;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+.botao-editar {
+    --background: #512454;
+    color: white;
+    font-weight: 600;
+}
+
+.botao-editar:hover {
+    --background: #87138F;
+}
+
+
+.botao-excluir {
+    --background: #FFDADB;
+    color: #AE0003;
+    border: solid 3px #AE0003;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
 
 .image-preview {
     display: flex;
@@ -133,43 +194,4 @@ ion-item {
     background: none;
     border: none;
     cursor: pointer;
-}
-
-
-.icone-perfil {
-    width: 16px;
-}
-
-ion-item {
-    --inner-border-width: 0px;
-    --highlight-color-focused: transparent;
-}
-
-.input-wrapper {
-    padding: 6px 6px 4px 6px;
-    gap: 8px;
-    border: 2px solid #777DAA;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    background-color: white;
-    font-size: 14px;
-}
-
-.input-wrapper input {
-    background-color: white;
-    padding: 0;
-    outline: none;
-    border: none;
-    font-size: 14px;
-}
-
-.input-wrapper .lucide-icon {
-    color: #777DAA;
-    padding-bottom: -6px;
-
-}
-
-.campo-input {
-    padding: 4px 0px;
 }

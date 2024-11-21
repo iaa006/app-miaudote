@@ -57,9 +57,40 @@
         </div>
 
         <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
-        <ion-button class="botao-editar" style="width: 100%;">Editar perfil</ion-button>
-        <ion-button class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
+        <ion-button (click)="navegacaoEditar()" expand="block" class="botao-editar" style="width: 100%;">Editar
+          perfil</ion-button>
+        <ion-button id="open-delete-modal" class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
         <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
+
+
+        <ion-modal #deleteModal trigger="open-delete-modal" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-toolbar style="--background: white; height: max-content;">
+              <ion-title slot="start" style="color: #512454;">Excluir perfil</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="cancelDelete()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                    [size]="16"></lucide-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+
+            <ion-content class="ion-padding" style="--background: white;">
+
+              <div
+                style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
+                <lucide-icon name="triangle-alert" style="color: #D90004;" class="my-icon" [size]="96"></lucide-icon>
+                <p>Essa ação é irreversível e não pode ser desfeita.
+                  <strong>Tem certeza disso?</strong>
+                </p>
+              </div>
+
+              <div class="botoes">
+                <ion-button expand="block" class="botao-foto" (click)="cancelDelete()">Cancelar</ion-button>
+                <ion-button expand="block" class="botao-deletar" (click)="deleteData()">Deletar perfil</ion-button>
+              </div>
+
+            </ion-content>
+          </ng-template>
+        </ion-modal>
 
       </ion-card-content>
     </ion-card>
@@ -72,7 +103,7 @@
       <h2 style="font-weight: 700; color: #512454;">Pets deste usuário</h2>
 
       <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
-      <ion-button class="botao-adicionar">Adicionar animal</ion-button>
+      <ion-button (click)="navegacaoAddAnimal()" class="botao-adicionar">Adicionar animal</ion-button>
     </div>
     <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
 
@@ -85,12 +116,12 @@
 
     <p style="color: #512454; font-weight: 500;">{{ message }}</p>
 
-    <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ion-modal #filterModal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
       <ng-template>
         <ion-toolbar style="--background: white;">
           <ion-title slot="start" style="color: #512454;">Filtrar</ion-title>
           <ion-buttons slot="end">
-            <ion-button (click)="cancel()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+            <ion-button (click)="cancelFiltro()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
                 [size]="16"></lucide-icon></ion-button>
           </ion-buttons>
         </ion-toolbar>
@@ -99,9 +130,10 @@
 
           <div class="campo-filtro">
             <h3 class="titulo-filtro">Estado</h3>
-            <ion-select style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+            <ion-select class="select-estado" interface="popover"
+              style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
               placeholder="Selecionar" [(ngModel)]="estadoSelecionado">
-              <ion-select-option
+              <ion-select-option class="option-estado"
                 style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
                 *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
             </ion-select>
@@ -118,10 +150,10 @@
           <div class="campo-filtro">
             <h3 class="titulo-filtro">Espécie</h3>
             <ion-radio-group [(ngModel)]="especieSelecionada">
-              <ion-item style="--background:none; color: #1E1E1E;"
+              <ion-item class="itens-input" style="--background:none; color: #1E1E1E;"
                 *ngFor="let especie of ['Gato', 'Cachorro', 'Roedor', 'Pássaro', 'Todos', 'Outros']">
                 <ion-label>{{ especie }}</ion-label>
-                <ion-radio style="--color: #512454;" slot="start" [value]="especie"></ion-radio>
+                <ion-radio style="--color: #512454; " slot="start" [value]="especie"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </div>
@@ -169,10 +201,11 @@
             </ion-radio-group>
           </div>
 
-          <ion-button expand="block" class="botao-adicionar" (click)="confirm()">Aplicar filtros</ion-button>
+          <ion-button expand="block" class="botao-adicionar" (click)="confirmFiltro()">Aplicar filtros</ion-button>
         </ion-content>
       </ng-template>
     </ion-modal>
+    <!-- Essa parte só aparece se o perfil possuir animais cadastrados -->
 
     <ion-card class="card">
 
@@ -207,11 +240,10 @@
 
         </div>
 
-        <ion-button class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
+        <ion-button (click)="navegacaoAnimal()" class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
 
       </ion-card-content>
     </ion-card>
-    <!-- Essa parte só aparece se o perfil possuir animais cadastrados -->
 
     <!-- Caso o usuário não possua animais cadastrados -->
     <span style="color: #512454; font-weight: 500; display: none;">Este usuário não possui animais para doação</span>

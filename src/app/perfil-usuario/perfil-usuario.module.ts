@@ -8,7 +8,7 @@ import { PerfilUsuarioPageRoutingModule } from './perfil-usuario-routing.module'
 
 import { PerfilUsuarioPage } from './perfil-usuario.page';
 
-import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone, X } from 'lucide-angular';
+import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone, X, User, TriangleAlert } from 'lucide-angular';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone
     FormsModule,
     IonicModule,
     PerfilUsuarioPageRoutingModule,
-    LucideAngularModule.pick({Menu, Phone, Mail, CircleCheck, MapPin, ListFilter, X})
+    LucideAngularModule.pick({Menu, Phone, Mail, CircleCheck, MapPin, ListFilter, X, User, TriangleAlert})
   ],
   declarations: [PerfilUsuarioPage]
 })

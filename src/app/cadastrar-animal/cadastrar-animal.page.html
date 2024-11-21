@@ -12,17 +12,19 @@
   <div class="ion-text-center">
     <h3 style="font-weight: 700; color: #512454; margin: 24px 0px;">Adicionar animal</h3>
   </div>
-
+  
   <ion-card class="card">
     <div class="ion-padding" style="--background: white;">
-  
-      <div class="campo-forms">
-        <h3 class="titulo-forms">*Informe o nome</h3>
-        <ion-item class="input-forms">
-          <lucide-icon name="user" class="my-icon" style="color: #777DAA;" slot="start"></lucide-icon>
-          <ion-input placeholder="Nome do animal" [(ngModel)]="nomeAnimal"></ion-input>
-        </ion-item>
+      
+      <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+        <ion-label style="font-size: 14px;">Insira o nome</ion-label>
+        <span class="input-wrapper">
+          <lucide-icon name="paw-print" style="color: #1E1E1E;" class="my-icon lucide-icon" [size]="16"></lucide-icon>
+          <input type="text" placeholder="Nome do animal" [(ngModel)]="nomeAnimal">
+        </span>
       </div>
+
+      <ion-button id="open-foto-modal" expand="block" class="botao-foto" style="width: 100%;">Inserir foto</ion-button>
   
       <div class="campo-forms">
         <h3 class="titulo-forms">*Informe a espécie</h3>
@@ -67,7 +69,44 @@
         </ion-radio-group>
       </div>
   
-      <ion-button expand="block" class="botao-foto" style="width: 100%;">Inserir foto</ion-button>
+
+      <ion-modal #editFotoModal trigger="open-foto-modal">
+        <ng-template>
+          <ion-toolbar style="--background: white; height: max-content;">
+            <ion-title slot="start" style="color: #512454;">Adicionar foto</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="closeEditFoto()">
+                <lucide-icon name="x" style="color: #1E1E1E;" class="my-icon" [size]="16"></lucide-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+      
+          <ion-content class="ion-padding" style="--background: white;">
+      
+            <p style="color: #512454;">Escolha uma foto da galeria para inserir no perfil do animal</p>
+      
+            <div class="image-container ion-text-center">
+              <div class="image-preview" *ngIf="selectedImage; else defaultPreview">
+                <img [src]="selectedImage" alt="Prévia da imagem" class="image-preview-style" />
+              </div>
+              <ng-template #defaultPreview>
+                <div class="upload-placeholder">
+                  <button class="upload-button" (click)="selecionarImagem()">
+                    <lucide-icon name="image-plus" style="color: #777DAA;" [size]="116"></lucide-icon>
+                  </button>
+                </div>
+              </ng-template>
+            </div>
+      
+            <div class="botoes">
+              <ion-button expand="block" class="botao-cancelar" (click)="cancelEditFoto()">Remover</ion-button>
+              <ion-button expand="block" class="botao-confirmar" [disabled]="!selectedImage" (click)="saveEditFoto()">
+                Confirmar
+              </ion-button>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
 
       <div class="campo-forms">
         <h3 class="titulo-forms">Informe a descrição</h3>
@@ -77,8 +116,8 @@
       </div>
 
       <div class="botoes">
-        <ion-button expand="block" class="botao-cancelar">Cancelar</ion-button>
-        <ion-button expand="block" class="botao-confirmar">Confirmar</ion-button>
+        <ion-button (click)="navegacaoPerfil()" expand="block" class="botao-cancelar">Cancelar</ion-button>
+        <ion-button (click)="navegacaoPerfil()" expand="block" class="botao-confirmar">Confirmar</ion-button>
       </div>
     </div>
   

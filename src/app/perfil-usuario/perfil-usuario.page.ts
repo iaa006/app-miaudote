@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
@@ -8,7 +9,30 @@ import { OverlayEventDetail } from '@ionic/core/components';
   styleUrls: ['./perfil-usuario.page.scss'],
 })
 export class PerfilUsuarioPage {
-  @ViewChild(IonModal) modal!: IonModal;
+  constructor(private router: Router) { }
+
+  @ViewChild('filterModal') filterModal!: IonModal;
+  @ViewChild('deleteModal') deleteModal!: IonModal;
+
+  navegacaoEditar() {
+    this.router.navigate(['/atualizar-usuario']);
+  }
+  navegacaoAnimal() {
+    this.router.navigate(['/perfil-animal']);
+  }
+  navegacaoAddAnimal() {
+    this.router.navigate(['/cadastrar-animal']);
+  }
+
+  deleteData() {
+    console.log('Deletando...');
+    //funcionalidade pra dar o delete
+    this.deleteModal.dismiss(null, 'confirm');
+  }
+
+  cancelDelete() {
+    this.deleteModal.dismiss(null, 'cancel');
+  }
 
   message = 'Não foi selecionado nenhum filtro além do padrão.';
   estados: string[] = [
@@ -28,11 +52,11 @@ export class PerfilUsuarioPage {
   situacaoSelecionada: string = '';
 
 
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
+  cancelFiltro() {
+    this.filterModal.dismiss(null, 'cancel');
   }
 
-  confirm() {
+  confirmFiltro() {
 
     this.message = `Filtros aplicados: 
       Estado: ${this.estadoSelecionado || 'Todos'}, 
@@ -43,7 +67,7 @@ export class PerfilUsuarioPage {
       Idade: ${this.idadeSelecionada || 'Todos'}, 
       Situação: ${this.situacaoSelecionada || 'Todos'}.`;
 
-    this.modal.dismiss(null, 'confirm');
+    this.filterModal.dismiss(null, 'confirm');
   }
 
   onWillDismiss(event: Event) {
