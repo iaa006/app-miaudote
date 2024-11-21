@@ -1,3 +1,9 @@
+ion-item {
+    --inner-border-width: 0px;
+    --highlight-color-focused: transparent;
+  }
+  
+
 .conteudo-login {
     --background: #5d3060; 
     display: flex;
@@ -32,7 +38,7 @@
 
 .campo-input {
     --background: transparent;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 5px;
@@ -40,6 +46,8 @@
 
 .campo-input ion-icon {
     color: #5d3060; 
+    margin: 0px;
+    margin-right: 8px;
 }
 
 .campo-input ion-input {
@@ -51,14 +59,14 @@
     font-size: 14px;
     color: #5d3060;
     text-align: right;
-    margin: 10px 0;
+    margin: 4px 0;
 }
 
 .botao-login {
     --background: #5d3060; 
     --color: #ffffff; 
     border-radius: 10px;
-    margin: 15px 0;
+    margin: 8px 0;
 }
 
 .texto-cadastro {
