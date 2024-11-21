@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cadastro.page.scss'],
 })
 export class CadastroPage {
-  etapa = 1;
+  etapa: number = 1; 
   cadastroForm: FormGroup;
   enderecoForm: FormGroup;
   usuarioForm: FormGroup;
@@ -22,47 +22,33 @@ export class CadastroPage {
 
   constructor(private formBuilder: FormBuilder) {
     this.cadastroForm = this.formBuilder.group({
-      nome: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      telefone: ['', Validators.required],
-      tipoCadastro: ['', Validators.required],
-      cpfCnpj: ['', Validators.required],
+      nome: [''],
+      email: [''],
+      telefone: [''],
+      tipoCadastro: [''],
+      documento: [''], 
     });
 
     this.enderecoForm = this.formBuilder.group({
-      estado: ['', Validators.required],
-      cidade: ['', Validators.required],
-      logradouro: ['', Validators.required],
-      numero: ['', Validators.required],
+      estado: [''],
+      cidade: [''],
+      logradouro: [''],
+      numero: [''],
       complemento: [''],
     });
 
     this.usuarioForm = this.formBuilder.group({
-      usuario: ['', Validators.required],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      confirmarSenha: ['', Validators.required],
-    }, { validator: this.validarSenhas });
+      usuario: [''],
+      senha: [''],
+      confirmarSenha: [''],
+    });
 
     this.bancarioForm = this.formBuilder.group({
       agencia: [''],
       conta: [''],
       responsavel: [''],
-      chavePix: ['']
+      chavePix: [''],
     });
-  }
-
-  get formControls() {
-    return this.cadastroForm.controls;
-  }
-
-  get formControlsEndereco() {
-    return this.enderecoForm.controls;
-  }
-
-  validarSenhas(formGroup: FormGroup) {
-    const senha = formGroup.get('senha')?.value;
-    const confirmarSenha = formGroup.get('confirmarSenha')?.value;
-    return senha === confirmarSenha ? null : { senhasNaoConferem: true };
   }
 
   senhaVisivel = false;
@@ -72,13 +58,11 @@ export class CadastroPage {
   }
 
   proximaEtapa() {
-    if (this.etapa === 1 && this.cadastroForm.valid) {
-      this.etapa++;
-    } else if (this.etapa === 2 && this.enderecoForm.valid) {
-      this.etapa++;
-    } else if (this.etapa === 3 && this.usuarioForm.valid) {
+    console.log('Etapa atual:', this.etapa);
+    if (this.etapa < 4) {
       this.etapa++;
     }
+    console.log('Próxima etapa:', this.etapa);
   }
 
   voltarEtapa() {
@@ -94,7 +78,7 @@ export class CadastroPage {
       ...this.usuarioForm.value,
       dadosBancarios: this.bancarioForm.value,
     };
-  
+
     console.log('Cadastro finalizado:', cadastroCompleto);
     alert('Cadastro concluído com sucesso!');
   }

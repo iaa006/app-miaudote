@@ -1,20 +1,54 @@
+.conteudoCadastro {
+  --background: #5d3060; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .titulo {
-    text-align: center;
-    font-size: 24px;
-    color: #4d004d;
+  display: flex;
+  justify-content: center; 
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff; 
+  margin: 20px 0;
 }
 
-.subtitulo {
-    text-align: center;
-    font-size: 16px;
-    color: #6d006d;
-    margin-bottom: 20px;
+form {
+  width: 90%;
+  max-width: 400px;
+  background: #ffffff; 
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
-.error {
-    color: red;
-    font-size: 12px;
-    margin-left: 16px;
+p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #5d3060; 
+  margin-bottom: 10px;
+}
+
+ion-item {
+  --background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 5px;
+}
+
+ion-item ion-icon {
+  color: #5d3060; 
+}
+
+ion-item ion-label {
+  color: #5d3060;
+}
+
+ion-item ion-input {
+  font-size: 16px;
+  color: #5d3060;
 }
 
 .footer-links {
@@ -22,7 +56,7 @@
     margin-top: 20px;
 
 a {
-    color: #6d006d;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -31,29 +65,14 @@ a:hover {
 }
 }
 
-.button-group {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+.textoConta {
+  color: #ffffff;
 }
 
-.footer-actions {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-  
-    a {
-      color: #6A1B9A; 
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  
-    a:hover {
-      text-decoration: none;
-    }
-  
-    p {
-      margin: 5px 0;
-    }
+ion-button {
+  --background: #5d3060; 
+  --color: #ffffff; 
+  border-radius: 10px;
+  margin: 15px 0;
 }
-  
+

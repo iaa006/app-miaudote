@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'cadastro',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {

@@ -6,71 +6,57 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div *ngIf="etapa === 1"></div>
-  <h2 class="titulo">Cadastro</h2>
-  <p class="subtitulo">Insira seus dados para criar uma nova conta</p>
+<ion-content class="conteudoCadastro">
+  <div *ngIf="etapa === 1">
+    <h2 class="titulo">Cadastro</h2>
 
-  <form [formGroup]="cadastroForm" (ngSubmit)="proximaEtapa()">
-    <ion-item>
-      <ion-label position="floating">*Informe seu nome completo</ion-label>
-      <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="formControls.nome.invalid && formControls.nome.touched">
-      Nome é obrigatório.
-    </div>
+    <form [formGroup]="cadastroForm" (ngSubmit)="proximaEtapa()">
+      <p>Insira seus dados para criar uma nova conta</p>
+      <ion-item>
+        <ion-label position="floating">*Informe seu nome completo</ion-label>
+        <ion-input type="text" formControlName="nome" placeholder="Nome completo"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">*Informe seu e-mail</ion-label>
-      <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="formControls.email.invalid && formControls.email.touched">
-      E-mail inválido.
-    </div>
+      <ion-item>
+        <ion-label position="floating">*Informe seu e-mail</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">*Informe seu telefone</ion-label>
-      <ion-input type="tel" formControlName="telefone" placeholder="Telefone"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="formControls.telefone.invalid && formControls.telefone.touched">
-      Telefone inválido.
-    </div>
+      <ion-item>
+        <ion-label position="floating">*Informe seu telefone</ion-label>
+        <ion-input type="tel" formControlName="telefone" placeholder="Telefone"></ion-input>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>*Informe seu tipo de Cadastro</ion-label>
-      <ion-radio-group formControlName="tipoCadastro">
-        <ion-item>
-          <ion-label>CPF</ion-label>
-          <ion-radio slot="start" value="cpf"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>CNPJ</ion-label>
-          <ion-radio slot="start" value="cnpj"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-item>
-    <div class="error" *ngIf="formControls.tipoCadastro.invalid && formControls.tipoCadastro.touched">
-      Selecione uma opção.
-    </div>
+      <ion-item>
+        <ion-label>*Informe seu tipo de Cadastro</ion-label>
+        <ion-radio-group formControlName="tipoCadastro">
+          <ion-item>
+            <ion-label>CPF</ion-label>
+            <ion-radio slot="start" value="cpf"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>CNPJ</ion-label>
+            <ion-radio slot="start" value="cnpj"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-item>
 
-    <ion-item>
-      <ion-input type="text" formControlName="documento" placeholder="CPF/CNPJ"></ion-input>
-    </ion-item>
-    <div class="error" *ngIf="formControls.documento.invalid && formControls.documento.touched">
-      Númedo de documento inválido.
-    </div>
+      <ion-item>
+        <ion-input type="text" formControlName="documento" placeholder="CPF/CNPJ"></ion-input>
+      </ion-item>
 
-    <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
-      Avançar
-      <ion-icon slot="end" name="arrow-forward"></ion-icon>
-    </ion-button>
-  </form>
+      <ion-button expand="block" type="submit" [disabled]="cadastroForm.invalid">
+        Avançar
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </form>
   </div>
 
   <div *ngIf="etapa === 2">
     <h2 class="titulo">Cadastro</h2>
-    <p class="subtitulo">Insira seu endereço</p>
+
     <form [formGroup]="enderecoForm" (ngSubmit)="proximaEtapa()">
+      <p class="subtitulo">Insira seu endereço</p>
       <ion-item>
         <ion-label position="floating">*Informe seu estado</ion-label>
         <ion-select formControlName="estado" placeholder="Selecionar">
@@ -79,33 +65,21 @@
           </ion-select-option>
         </ion-select>
       </ion-item>
-      <div class="error" *ngIf="formControlsEndereco.estado.invalid && formControlsEndereco.estado.touched">
-        Estado é obrigatório.
-      </div>
 
       <ion-item>
         <ion-label position="floating">*Informe sua cidade</ion-label>
         <ion-input formControlName="cidade" placeholder="Cidade"></ion-input>
       </ion-item>
-      <div class="error" *ngIf="formControlsEndereco.cidade.invalid && formControlsEndereco.cidade.touched">
-        Cidade é obrigatória.
-      </div>
 
       <ion-item>
         <ion-label position="floating">*Informe seu logradouro</ion-label>
         <ion-input formControlName="logradouro" placeholder="Logradouro"></ion-input>
       </ion-item>
-      <div class="error" *ngIf="formControlsEndereco.logradouro.invalid && formControlsEndereco.logradouro.touched">
-        Logradouro é obrigatório.
-      </div>
 
       <ion-item>
         <ion-label position="floating">*Informe seu número</ion-label>
         <ion-input formControlName="numero" placeholder="Número"></ion-input>
       </ion-item>
-      <div class="error" *ngIf="formControlsEndereco.numero.invalid && formControlsEndereco.numero.touched">
-        Número é obrigatório.
-      </div>
 
       <ion-item>
         <ion-label position="floating">Informe o complemento</ion-label>
@@ -125,34 +99,24 @@
 
   <div *ngIf="etapa === 3">
     <h2 class="titulo">Cadastro</h2>
-    <p class="subtitulo">Insira seus dados para criar uma nova conta</p>
     <form [formGroup]="usuarioForm" (ngSubmit)="proximaEtapa()">
+      <p class="subtitulo">Insira seus dados para criar uma nova conta</p>
       <ion-item>
         <ion-label position="floating">*Informe seu nome de usuário</ion-label>
         <ion-input formControlName="usuario" placeholder="Usuário"></ion-input>
       </ion-item>
-      <div class="error" *ngIf="formControlsUsuario.usuario.invalid && formControlsUsuario.usuario.touched">
-        Nome de usuário é obrigatório.
-      </div>
 
       <ion-item>
         <ion-label position="floating">*Crie sua senha</ion-label>
         <ion-input formControlName="senha" placeholder="Senha"></ion-input>
         <ion-icon name="eye-outline" slot="end"></ion-icon>
       </ion-item>
-      <div class="error" *ngIf="formControlsUsuario.senha.invalid && formControlsUsuario.senha.touched">
-        Senha é obrigatória.
-      </div>
 
       <ion-item>
-        <ion-label position="floating">Confirme sua senha *</ion-label>
+        <ion-label position="floating">*Confirme sua senha</ion-label>
         <ion-input formControlName="confirmarSenha" type="password" placeholder="Confirmar senha"></ion-input>
         <ion-icon slot="end" name="eye-off" (click)="toggleSenhaVisivel()"></ion-icon>
       </ion-item>
-      <div class="error"
-        *ngIf="formControlsUsuario.confirmarSenha.invalid && formControlsUsuario.confirmarSenha.touched">
-        A confirmação da senha é obrigatória.
-      </div>
 
       <div class="button-group">
         <ion-button expand="block" color="light" (click)="voltarEtapa()">
@@ -167,8 +131,8 @@
 
   <div *ngIf="etapa === 4">
     <h2 class="titulo">Cadastro</h2>
-    <p class="subtitulo">Insira seus dados bancários para receber doações (opcional)</p>
     <form [formGroup]="bancarioForm" (ngSubmit)="finalizarCadastro()">
+      <p class="subtitulo">Insira seus dados bancários para receber doações (opcional)</p>
       <ion-item>
         <ion-label position="floating">Informe sua agência</ion-label>
         <ion-input formControlName="agencia" type="text" placeholder="Agência"></ion-input>
@@ -201,7 +165,7 @@
   </div>
 
   <div class="footer-links">
-    <p>Já possui uma conta? <a routerLink="/login">Entrar</a></p>
+    <p class="textoConta">Já possui uma conta? <a routerLink="/login">Entrar</a></p>
     <p><a routerLink="/home">Permanecer sem sessão</a></p>
   </div>
 </ion-content>
