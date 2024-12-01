@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -58,7 +58,7 @@ export class PerfilUsuarioPage {
     }
   }
 
-  constructor(private apiServices : ApiService, private route: ActivatedRoute) { }
+  constructor(private router: Router,private apiServices : ApiService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe( parametros => {
@@ -66,23 +66,23 @@ export class PerfilUsuarioPage {
         this.id = parametros['id']
       }
 
-    this.usuarioLogadoEDoador();
+    this.getDadosUsuario();
     this.getAnimaisDoador()
     console.log(this.apiServices.infoUsuario)
     });
 }
+
+  editarUsuario(){
+  this.router.navigate([`/atualizar-usuario/${this.id}`])
+  }
   async getDadosUsuario(){
     const data :any = await this.apiServices.getDoadorUnico(this.id).toPromise()
-    this.dadosUsuario = data;
+    console.log(data)
+    this.dadosUsuario = data.usuario;
+    this.usuarioLogadoeDoador = data.usuarioProprietario;
   }
 
-  async usuarioLogadoEDoador(){
-    await this.getDadosUsuario()
-    console.log(this.apiServices.infoUsuario.id_user)
-    if(this.apiServices.infoUsuario.id_user === this.dadosUsuario.id_user){
-      this.usuarioLogadoeDoador = true;
-    }  
-  }
+ 
 
   getAnimaisDoador(){
     this.apiServices.getAnimaisDoador(this.id).subscribe(

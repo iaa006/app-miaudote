@@ -1,0 +1,170 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row class="ion-align-items-center menu-topo">
+      <lucide-icon name="menu" class="my-icon"></lucide-icon>
+      <img src="../../assets/logo-miaudote.svg" alt="Logo do Miaudote" width="70%" class="logo-miaudote">
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="conteudo ion-padding">
+
+  <div class="ion-text-center">
+    <h3 style="font-weight: 700; color: #512454; margin: 24px 0px;">Alterar Dados de Perfil</h3>
+  </div>
+
+  <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+    <ion-label style="font-size: 14px;">Insira o novo nome</ion-label>
+    <span class="input-wrapper">
+      <lucide-icon name="user" style="color: #1E1E1E;" class="my-icon lucide-icon" [size]="16"></lucide-icon>
+      <input [(ngModel)]="nomeCompleto" type="text" placeholder="Nome completo" name="edit-nome">
+    </span>
+  </div>
+
+  <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+    <ion-label style="font-size: 14px;">Insira o novo usuário</ion-label>
+    <span class="input-wrapper">
+      <lucide-icon name="user" style="color: #1E1E1E;" class="my-icon lucide-icon" [size]="16"></lucide-icon>
+      <input type="text" [(ngModel)]="nomeUsuario" placeholder="Nome de usuário" name="edit-user">
+    </span>
+  </div>
+
+  <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+    <ion-label style="font-size: 14px;">Insira o novo e-mail</ion-label>
+    <span class="input-wrapper">
+      <lucide-icon name="mail" style="color: #1E1E1E;" class="my-icon" [size]="14"></lucide-icon>
+      <input type="text" [(ngModel)]="email" placeholder="Email" name="edit-email">
+    </span>
+  </div>
+
+  <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+    <ion-label style="font-size: 14px;">Insira o novo telefone</ion-label>
+    <span class="input-wrapper">
+      <lucide-icon name="phone" style="color: #1E1E1E;" class="my-icon" [size]="14"></lucide-icon>
+      <input type="text" [(ngModel)]="telefone" placeholder="Telefone" name="edit-telefone">
+    </span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 4px;">
+    <ion-button id="open-foto-modal" expand="block" class="botao-foto" style="width: 100%;">Alterar foto</ion-button>
+
+    <ion-button id="open-endereco-modal" expand="block" class="botao-foto" style="width: 100%;">Alterar
+      Endereço</ion-button>
+  </div>
+
+
+  <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
+    <ion-label style="font-size: 14px;">Insira a nova descrição</ion-label>
+    <span class="input-wrapper">
+      <ion-textarea style="text-align: left; vertical-align: top; padding-bottom: 16px;"
+        placeholder="Descrição" [(ngModel)]="descricao"></ion-textarea>
+    </span>
+  </div>
+
+  <div class="botoes">
+    <ion-button expand="block" class="botao-cancelar" (click)="cancelEdit()">Cancelar</ion-button>
+    <ion-button expand="block" class="botao-confirmar" (click)="saveEditData()">Confirmar</ion-button>
+  </div>
+
+</ion-content>
+
+
+<ion-modal #editEnderecoModal trigger="open-endereco-modal">
+  <ng-template>
+    <ion-toolbar style="--background: white; height: max-content;">
+      <ion-title slot="start" style="color: #512454;">Editar endereço</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="cancelEditEndereco()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+            [size]="16"></lucide-icon></ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content class="ion-padding" style="--background: white;">
+
+      <div class="campo-input">
+        <h5 class="titulo-input">Selecione o novo estado</h5>
+        <ion-select class="select-estado" interface="popover"
+          style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+          placeholder="Selecionar" [(ngModel)]="estadoSelecionado">
+          <ion-select-option class="option-estado"
+            style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+            *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
+        </ion-select>
+      </div>
+
+
+      <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 12px 0px;">
+        <ion-label style="font-size: 14px;">Informe a nova cidade</ion-label>
+        <span class="input-wrapper" style="justify-content: space-between;">
+          <input type="text" [(ngModel)]="cidade" placeholder="Cidade" name="edit-endereco">
+          <ion-icon style="color: #512454; font-size: 14px;" slot="end" name="search-outline"></ion-icon>
+        </span>
+      </div>
+
+      <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 12px 0px;">
+        <ion-label style="font-size: 14px;">Insira o novo logradouro</ion-label>
+        <span class="input-wrapper">
+          <input type="text" [(ngModel)]="logradouro" placeholder="Ex: Av, rua, travessa..." name="edit-endereco">
+        </span>
+      </div>
+
+      <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 12px 0px;">
+        <ion-label style="font-size: 14px;">Insira o novo número da casa</ion-label>
+        <span class="input-wrapper">
+          <input type="text" [(ngModel)]="numCasa" placeholder="Número da casa" name="edit-user">
+        </span>
+      </div>
+
+      <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 12px 0px;">
+        <ion-label style="font-size: 14px;">Insira o novo complemento</ion-label>
+        <span class="input-wrapper">
+          <input type="text" [(ngModel)]="complemento" placeholder="Complemento" name="edit-email">
+        </span>
+      </div>
+
+
+      <div class="botoes">
+        <ion-button expand="block" class="botao-cancelar" (click)="cancelEditEndereco()">Cancelar</ion-button>
+        <ion-button expand="block" class="botao-confirmar" (click)="saveEditEndereco()">Confirmar</ion-button>
+      </div>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+<ion-modal #editFotoModal trigger="open-foto-modal">
+  <ng-template>
+    <ion-toolbar style="--background: white; height: max-content;">
+      <ion-title slot="start" style="color: #512454;">Alterar foto</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="closeEditFoto()">
+          <lucide-icon name="x" style="color: #1E1E1E;" class="my-icon" [size]="16"></lucide-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <ion-content class="ion-padding" style="--background: white;">
+
+      <p style="color: #512454;">Escolha uma foto da galeria para inserir no perfil</p>
+
+      <div class="image-container ion-text-center">
+        <div class="image-preview" *ngIf="selectedImage; else defaultPreview">
+          <img [src]="selectedImage" alt="Prévia da imagem" class="image-preview-style" />
+        </div>
+        <ng-template #defaultPreview>
+          <div class="upload-placeholder">
+            <button class="upload-button" (click)="selecionarImagem()">
+              <lucide-icon name="image-plus" style="color: #777DAA;" [size]="116"></lucide-icon>
+            </button>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="botoes">
+        <ion-button expand="block" class="botao-cancelar" (click)="cancelEditFoto()">Remover</ion-button>
+        <ion-button expand="block" class="botao-confirmar" [disabled]="!selectedImage" (click)="saveEditFoto()">
+          Confirmar
+        </ion-button>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

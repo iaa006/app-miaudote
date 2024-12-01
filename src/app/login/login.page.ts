@@ -20,14 +20,17 @@ export class LoginPage {
     this.retornoLogin = data;
   }
 
+  async setToken(){
+    
+    await this.apiServices.tokenHeader()
+  }
   async logar(){
     await this.postLogin();
-    console.log(this.retornoLogin)
     if(this.retornoLogin.token){
-      this.storageServices.set('token', this.retornoLogin.token)
+      await this.storageServices.set('token', this.retornoLogin.token)
       this.apiServices.infoUsuario = this.retornoLogin.usuario
-      console.log(this.storageServices.get('token'))
-      this.storageServices.set('usuario', this.retornoLogin.usuario)
+      await this.storageServices.set('usuario', this.retornoLogin.usuario)
+      await this.apiServices.tokenHeader()
       this.router.navigate(['/home'])
     }
   }

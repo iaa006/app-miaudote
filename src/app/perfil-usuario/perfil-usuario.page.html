@@ -58,7 +58,7 @@
 
         <span *ngIf="usuarioLogadoeDoador">
           <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
-          <ion-button class="botao-editar" style="width: 100%;">Editar perfil</ion-button>
+          <ion-button class="botao-editar" style="width: 100%;" (click)="editarUsuario()">Editar perfil</ion-button>
           <ion-button class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
           <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
         </span>

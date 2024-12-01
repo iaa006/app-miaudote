@@ -11,18 +11,23 @@ export class ApiService {
   private url_base : string = 'http://127.0.0.1:8000/api/';
   constructor(private http:HttpClient, private storage : StorageService) { }
 
+  async tokenHeader(){
+    await this.storage.get('token')?.then(value =>{
+      this.authToken = value
+    })
+  }
   
   
   getAnimais(){
+    console.log(this.authToken)
     return this.http.get(`${this.url_base}animais/`)
   }
 
   
   getDoadores(){
-    const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
-    });
-    return this.http.get(`${this.url_base}usuarios/`, { headers: httpHeaders })
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}usuarios/`, { headers })
   }
   getAnimaisFiltrados(sexo:string, especie:string, estado:string, cidade:string, tamanho:string, idade:string, situacao:string,){
     //${this.url_base}animais/?sexo=M&especie=gato&idade=filhote&status=disponivel
@@ -52,7 +57,9 @@ export class ApiService {
   }
 
   getDoadorUnico(id:any){
-    return this.http.get(`${this.url_base}usuario/${id}`)
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}usuario/${id}`,  { headers })
   }
 
   getAnimaisDoador(id:any){
@@ -76,5 +83,12 @@ export class ApiService {
       Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
     });
     return this.http.delete(`${this.url_base}usuario/${id}`, { headers: httpHeaders })
+  }
+
+  putUsuario(id:any, dados:any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.put(`${this.url_base}usuario/${id}`, dados, { headers })
+
   }
 }
