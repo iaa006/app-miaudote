@@ -211,9 +211,9 @@
         </div>
       
       <ng-template #verDoadores>
-        <h1>Doadores disponíveis</h1>
-
-        <button id="btn-filtro-doadores"><span>Filtros</span><span><lucide-icon name="list-filter"></lucide-icon></span></button>
+        <h2 style="font-weight: 700; color: #512454;">Doadores disponíveis</h2>
+    
+        <button style="display: flex; justify-content: space-between; align-items: center; color: #512454; border: solid 2px #1E1E1E; padding: 4px 8px; width: 90%; margin: 0 auto; background-color: white;" id="btn-filtro-doadores"><span>Filtrar</span><span><lucide-icon name="list-filter" class="my-icon" [size]="16" style="color: #1E1E1E;"></lucide-icon></span></button>
 
         <ion-modal trigger="btn-filtro-doadores" (willDismiss)="onWillDismiss($event)">
           <ng-template>
@@ -266,13 +266,23 @@
           <ion-card>
             <ion-card-content>
               <img src="../../assets/gato-2.png" alt="">
-              <ion-card-title>{{ doador.nome_completo }}</ion-card-title>
-              <ul class="infos-pet">
-                <li><img src="../../assets/map-pin.png" alt="">{{ doador.cidade}} - {{ doador.estado }}</li>
-                <br>
-                <li><img src="../../assets/check_circle.png" alt="">Doações concluídas: <strong style="color: #512454;"> 0</strong></li>
-              </ul>
-              <ion-button [routerLink]="['/perfil-usuario', doador.id_user]">Ver detalhes</ion-button>
+              <ion-card-title style="color: #512454; font-weight: 600;">{{ doador.nome_completo }}</ion-card-title>
+
+              <div style="display: flex; flex-direction: column; gap: 4px; justify-content: start;">
+    
+                <div style="display: flex; gap: 4px;"><lucide-icon name="map-pin" class="my-icon icone-perfil"
+                    [size]="16"></lucide-icon>
+                  <h3 style="color: #1E1E1E">{{ doador.cidade}} - {{ doador.estado }}</h3>
+                </div>
+      
+                <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
+                    [size]="16"></lucide-icon>
+                  <h3 style="color: #1E1E1E">Doações concluídas: <strong style="color: #512454;"> 0</strong></h3>
+                </div>
+      
+              </div>
+      
+              <ion-button [routerLink]="['/perfil-usuario', doador.id_user]" class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
             </ion-card-content>
           </ion-card>
 

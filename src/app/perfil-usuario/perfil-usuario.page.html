@@ -1,11 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-row class="ion-align-items-center menu-topo">
-      <lucide-icon name="menu" class="my-icon"></lucide-icon>
-      <img src="../../assets/logo-miaudote.svg" alt="Logo do Miaudote" width="70%" class="logo-miaudote">
-    </ion-row>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Miaudote</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button><lucide-icon name="arrow-right"></lucide-icon></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="conteudo-menu" class="ion-padding">
+    <div class="card-perfil-menu">
+      <img src="../../assets/gato-2.png" alt="" srcset="">
+      <div>
+        <h4 >Igão Foguete</h4>
+        <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+      </div>
+    </div>
+    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon
+        name="log-out"></lucide-icon></button>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-row class="ion-align-items-center menu-topo">
+          <img src="../../assets/logo-miaudote.svg" alt="Logo do Miaudote" width="70%" class="logo-miaudote">
+        </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
 
 <ion-content [fullscreen]="true" class="ion-padding conteudo">
 
@@ -82,11 +108,7 @@
     <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
 
     <!-- Essa parte só aparece se o perfil possuir animais cadastrados -->
-    <button id="open-modal" expand="block"
-      style="display: flex; justify-content: space-between; align-items: center; color: #512454; border: solid 2px #1E1E1E; padding: 4px 8px; width: 100%; background-color: white; margin: 16px 0px;">
-      Filtrar
-      <lucide-icon name="list-filter" class="my-icon" [size]="16" style="color: #1E1E1E;"></lucide-icon>
-    </button>
+       <button style="display: flex; justify-content: space-between; align-items: center; color: #512454; border: solid 2px #1E1E1E; padding: 4px 8px; width: 90%; margin: 0 auto; background-color: white;" id="open-modal"><span>Filtrar</span><span><lucide-icon name="list-filter" class="my-icon" [size]="16" style="color: #1E1E1E;"></lucide-icon></span></button>
 
     <p style="color: #512454; font-weight: 500;">{{ message }}</p>
 
