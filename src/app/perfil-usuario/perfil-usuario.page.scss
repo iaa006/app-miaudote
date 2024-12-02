@@ -136,7 +136,7 @@ ion-card{
     font-weight: bold;
   }
   
-  ul.infos-pet{
+  .infos-pet{
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -145,8 +145,7 @@ ion-card{
   
   
   
-  ul.infos-pet li{
-    margin-left: auto;
+  .infos-pet span{
     margin-right: auto;
     width: 50%;
     text-align: left;

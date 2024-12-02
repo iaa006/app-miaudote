@@ -21,6 +21,8 @@ export class PerfilAnimalPage implements OnInit {
 
   @ViewChild('deleteModal') deleteModal!: IonModal;
   @ViewChild('rejectModal') rejectModal!: IonModal;
+  @ViewChild('acceptModal') acceptModal!: IonModal;
+  @ViewChild('adocaoModal') adocaoModal!: IonModal;
 
 
   navegacaoEditar() {
@@ -45,6 +47,26 @@ export class PerfilAnimalPage implements OnInit {
 
   cancelReject() {
     this.rejectModal.dismiss(null, 'cancel');
+  }
+
+  aceitarAdocao() {
+    console.log('aceitando...');
+    //funcionalidade pra rejeitar
+    this.acceptModal.dismiss(null, 'confirm');
+  }
+
+  cancelAccept() {
+    this.acceptModal.dismiss(null, 'cancel');
+  }
+
+  adotar() {
+    console.log('solicitando adoção...');
+    //funcionalidade pra rejeitar
+    this.adocaoModal.dismiss(null, 'confirm');
+  }
+
+  cancelAdocao() {
+    this.adocaoModal.dismiss(null, 'cancel');
   }
 
 
