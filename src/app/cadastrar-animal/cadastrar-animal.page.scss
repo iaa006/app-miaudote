@@ -1,4 +1,3 @@
-
 .conteudo {
     --ion-background-color: #D6E1FF;
 }
@@ -17,6 +16,81 @@
 .my-icon {
     color: #87138F;
 }
+
+.menu-topo {
+    display: flex;
+    gap: 24px;
+    padding-left: 16px;
+    background-color: white;
+}
+
+.logo-miaudote {
+    max-width: 220px;
+}
+
+ion-toolbar {
+    --background: #fff;
+    --color: #87138F;
+}
+
+#conteudo-menu {
+    --background: #512454;
+    padding-top: 30px;
+
+}
+
+.card-perfil-menu {
+    justify-content: center;
+    background-color: #512454;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    display: flex;
+    padding: 4px 12px;
+    align-items: center;
+    width: 90%;
+    margin: auto auto;
+}
+
+button.card-perfil-menu {
+    gap: 4px;
+    padding: 2px 6px;
+    bottom: 8%;
+    right: auto;
+    left: 5%;
+}
+
+.card-perfil-menu img {
+    width: 30%;
+    height: 30%;
+
+}
+
+.card-perfil-menu div {
+    text-align: left;
+    padding-left: 10px;
+}
+
+
+.card-perfil-menu div a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.card-perfil-menu div h4 {
+    margin: 0;
+}
+
+
+#conteudo-principal {
+    --background: #D6E1FF;
+    text-align: center;
+    --color: #fff;
+    padding-top: 30px;
+}
+
 
 .card {
     background-color: white;
@@ -66,6 +140,7 @@ ion-item {
     --border-radius: 4px;
     border-radius: 4px;
 }
+
 .botao-cancelar {
     --background: #FCE5FE;
     color: #87138F;
@@ -83,4 +158,50 @@ ion-item {
 
 .botao-confirmar:hover {
     --background: #512454;
+}
+
+
+.image-preview {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.upload-placeholder {
+    width: 100%;
+    height: 160px;
+    border-radius: 16px;
+    background-color: #e4e4f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px dashed #777DAA;
+}
+
+.image-preview-style {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 16px;
+    object-fit: cover;
+}
+
+.upload-button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
