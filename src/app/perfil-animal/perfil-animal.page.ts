@@ -16,7 +16,6 @@ export class PerfilAnimalPage implements OnInit {
   dadosSolicitacoes : any[] = [];
 
 
-
   constructor(private apiServices : ApiService, private route: ActivatedRoute, private router: Router) { }
 
   @ViewChild('deleteModal') deleteModal!: IonModal;
@@ -55,19 +54,14 @@ export class PerfilAnimalPage implements OnInit {
       }
     });
 
-    this.usuarioLogadoEDoador();
+    this.getDadosAnimal();
   }
-  async usuarioLogadoEDoador(){
-    await this.getDadosAnimal()
-    console.log(this.apiServices.infoUsuario.id_user)
-    if(this.apiServices.infoUsuario.id_user === this.dadosAnimal.id_doador){
-      this.usuarioLogadoeDoador = true;
-    }
-  }
-   async getDadosAnimal(){
+  
+  async getDadosAnimal(){
     console.log(this.id)
     const data :any = await this.apiServices.getAnimalUnico(this.id).toPromise()
-    this.dadosAnimal = data
+    this.dadosAnimal = data.animal;
+    this.usuarioLogadoeDoador = data.usuarioProprietario;
   }
   getSolicitacoes(){
     this.apiServices.getSolicitacoesAnimal(this.id).subscribe((data: any) =>{
