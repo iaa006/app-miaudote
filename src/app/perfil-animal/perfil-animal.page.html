@@ -7,15 +7,16 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content id="conteudo-menu"class="ion-padding">
+  <ion-content id="conteudo-menu" class="ion-padding">
     <div class="card-perfil-menu">
       <img src="../../assets/gato-2.png" alt="" srcset="">
       <div>
-        <h4>Igão Foguete</h4>
+        <h4 >Igão Foguete</h4>
         <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
       </div>
     </div>
-    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
+    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon
+        name="log-out"></lucide-icon></button>
   </ion-content>
 </ion-menu>
 
@@ -25,71 +26,110 @@
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-      <ion-title>
-        Miaudote
-      </ion-title>
+        <ion-row class="ion-align-items-center menu-topo">
+          <img src="../../assets/logo-miaudote.svg" alt="Logo do Miaudote" width="70%" class="logo-miaudote">
+        </ion-row>
     </ion-toolbar>
   </ion-header>
   <ion-content [fullscreen]="true" id="conteudo-principal">
     <div id="box-animal">
       <img src="../../assets/gato-2.png" alt="">
-      <h1 style="color: #512454;">{{ dadosAnimal.animal_nome }}</h1>
-      <h3 style="color: #512454;">{{ dadosAnimal.nome_doador }}</h3>
-      <h4 class="botao-vazio">Acessar doador</h4>
-      <ul class="infos-pet">
-        <li><lucide-icon name="phone"></lucide-icon> {{ dadosAnimal.telefone_doador }}</li>
-        <li><lucide-icon name="mail"></lucide-icon> {{ dadosAnimal.email_doador }}</li>
-        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Espécie: </strong>{{ dadosAnimal.especie }}</li>
-        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Sexo: </strong>{{ dadosAnimal.sexo }}</li>
-        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Tamanho: </strong>{{ dadosAnimal.tamanho }}</li>
-        <li><lucide-icon name="circle-check"></lucide-icon> <strong>Idade: </strong>{{ dadosAnimal.idade }}</li>
-      </ul>
-      <div class="nota-azul"><span><lucide-icon name="map-pin"></lucide-icon><strong>Endereço</strong></span>
-      <div>{{ dadosAnimal.localizacao }}</div></div>
-      <div class="nota-azul"><span><strong>Descrição</strong></span>
-      <div>{{ dadosAnimal.descricao }}</div></div>
 
-              <!-- Essa parte só aparece se o animal for do próprio usuário autenticado -->
-              <ion-button (click)="navegacaoEditar()" expand="block" class="botao-editar" style="width: 100%;">Editar
-                animal</ion-button>
-              <ion-button id="open-delete-modal" class="botao-excluir" style="width: 100%;">Excluir animal</ion-button>
-              <!-- Essa parte só aparece se o animal for do próprio usuário autenticado -->
-      
-      
-              <ion-modal #deleteModal trigger="open-delete-modal">
-                <ng-template>
-                  <ion-toolbar style="--background: white; height: max-content;">
-                    <ion-title slot="start" style="color: #512454;">Excluir animal</ion-title>
-                    <ion-buttons slot="end">
-                      <ion-button (click)="cancelDelete()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
-                          [size]="16"></lucide-icon></ion-button>
-                    </ion-buttons>
-                  </ion-toolbar>
-      
-                  <ion-content class="ion-padding" style="--background: white;">
-      
-                    <div
-                      style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
-                      <lucide-icon name="triangle-alert" style="color: #D90004;" class="my-icon" [size]="96"></lucide-icon>
-                      <p>Essa ação é irreversível e não pode ser desfeita.
-                        <strong>Tem certeza disso?</strong>
-                      </p>
-                    </div>
-      
-                    <div class="botoes">
-                      <ion-button expand="block" class="botao-foto" (click)="cancelDelete()">Cancelar</ion-button>
-                      <ion-button expand="block" class="botao-excluir" (click)="deleteData()">Deletar perfil</ion-button>
-                    </div>
-      
-                  </ion-content>
-                </ng-template>
-              </ion-modal>
-      
-      <button>Quero Adotar!</button>
+      <ion-card-title style="color: #512454; font-weight: 600;">{{ dadosAnimal.animal_nome }}</ion-card-title>
+      <ion-card-subtitle style="color: #512454">&#64;{{ dadosAnimal.nome_doador }}</ion-card-subtitle>
+      <h4 class="botao-vazio">Acessar doador</h4>
+      <div class="infos-pet">
+        <span><lucide-icon class="my-icon" [size]="16" name="phone"></lucide-icon> {{ dadosAnimal.telefone_doador }}</span>
+        <span><lucide-icon class="my-icon" [size]="16" name="mail"></lucide-icon> {{ dadosAnimal.email_doador }}</span>
+        <span><lucide-icon class="my-icon" [size]="16" name="circle-check"></lucide-icon> <strong>Espécie: </strong>{{ dadosAnimal.especie }}</span>
+        <span><lucide-icon class="my-icon" [size]="16" name="circle-check"></lucide-icon> <strong>Sexo: </strong>{{ dadosAnimal.sexo }}</span>
+        <span><lucide-icon class="my-icon" [size]="16" name="circle-check"></lucide-icon> <strong>Tamanho: </strong>{{ dadosAnimal.tamanho }}</span>
+        <span><lucide-icon class="my-icon" [size]="16" name="circle-check"></lucide-icon> <strong>Idade: </strong>{{ dadosAnimal.idade }}</span>
+      </div>
+      <div class="nota-azul">
+        <span>
+          <lucide-icon [size]="14" name="map-pin"></lucide-icon>
+          <strong>Endereço</strong>
+        </span>
+        <div>{{ dadosAnimal.localizacao }}</div>
+      </div>
+      <div class="nota-azul"><span><strong>Descrição</strong></span>
+        <div>{{ dadosAnimal.descricao }}</div>
+      </div>
+
+      <div class="botoes">
+        <!-- Essa parte só aparece se o animal for do próprio usuário autenticado -->
+        <ion-button (click)="navegacaoEditar()" expand="block" class="botao-editar"
+        style="width: 100%;">Editar</ion-button>
+        <ion-button id="open-delete-modal" class="botao-excluir" style="width: 100%;">Excluir</ion-button>
+        <!-- Essa parte só aparece se o animal for do próprio usuário autenticado -->
+      </div>
+
+
+      <ion-modal #deleteModal trigger="open-delete-modal">
+        <ng-template>
+          <ion-toolbar style="--background: white; height: max-content;">
+            <ion-title slot="start" style="color: #512454;">Excluir animal</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancelDelete()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                  [size]="16"></lucide-icon></ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+
+          <ion-content class="ion-padding" style="--background: white;">
+
+            <div
+              style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
+              <lucide-icon name="triangle-alert" style="color: #D90004;" class="my-icon" [size]="96"></lucide-icon>
+              <p>Essa ação é irreversível e não pode ser desfeita.
+                <strong>Tem certeza disso?</strong>
+              </p>
+            </div>
+
+            <div class="botoes">
+              <ion-button expand="block" class="botao-foto" (click)="cancelDelete()">Cancelar</ion-button>
+              <ion-button expand="block" class="botao-excluir" (click)="deleteData()">Deletar perfil</ion-button>
+            </div>
+
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+      <ion-button id="open-adocao-modal" class="botao-adicionar">Quero Adotar!</ion-button>
+
+      <ion-modal #adocaoModal trigger="open-adocao-modal">
+        <ng-template>
+          <ion-toolbar style="--background: white; height: max-content;">
+            <ion-title slot="start" style="color: #512454;">Solicitar adoção</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="cancelAdocao()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                  [size]="16"></lucide-icon></ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+
+          <ion-content class="ion-padding" style="--background: white;">
+
+            <div
+              style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
+              <lucide-icon name="paw-print" style="color: #512454;" class="my-icon" [size]="96"></lucide-icon>
+              <p>Você está solicitando a adoção de um pet.
+                <strong>Tem certeza disso?</strong>
+              </p>
+            </div>
+
+            <div class="botoes">
+              <ion-button expand="block" class="botao-cancelar" (click)="cancelAdocao()">Cancelar</ion-button>
+              <ion-button expand="block" class="botao-adicionar" (click)="adotar()">Confirmar</ion-button>
+            </div>
+
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
     </div>
 
     <div id="solicitacoes">
-      <h1 style="color: #512454;">Solicitações de adoção</h1>
+      <h3 style="font-weight: 700; color: #512454; padding: 16px 0px;">Solicitações de Adoção</h3>
       <div class="card">
         <div class="card-header">
           09/11/2024 - 22:10
@@ -99,43 +139,76 @@
             <img src="../../assets/gato-2.png" alt="" srcset="">
             <div>
               <h4>Igão Foguete</h4>
-            <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+              <a style="display: flex; gap: 4px; margin-top: 4px; font-size: 14px;" href="">Ver perfil<lucide-icon name="arrow-up-right"
+                  style="color: #512454;" class="my-icon" [size]="14"></lucide-icon>
+              </a>
+
             </div>
           </span>
-          <span style="gap: 30%;">
-            <button id="open-reject-modal" class="botao-vazio">Rejeitar</button>
-          <button id="open-accept-modal" class="botao-cheio">Aceitar</button>
+          <span style="gap: 8px;">
+            <ion-button id="open-reject-modal" class="botao-cancelar">Rejeitar</ion-button>
+            <ion-button id="open-accept-modal" class="botao-adicionar">Aceitar</ion-button>
           </span>
 
           <ion-modal #rejectModal trigger="open-reject-modal">
             <ng-template>
               <ion-toolbar style="--background: white; height: max-content;">
-                <ion-title slot="start" style="color: #512454;">Adotar animal</ion-title>
+                <ion-title slot="start" style="color: #512454;">Rejeitar adoção</ion-title>
                 <ion-buttons slot="end">
                   <ion-button (click)="cancelReject()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
                       [size]="16"></lucide-icon></ion-button>
                 </ion-buttons>
               </ion-toolbar>
-  
+
               <ion-content class="ion-padding" style="--background: white;">
-  
+
                 <div
                   style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
                   <lucide-icon name="paw-print" style="color: #512454;" class="my-icon" [size]="96"></lucide-icon>
-                  <p>Você está solicitando a adoção de um pet.
+                  <p>Você está rejeitando a solicitação de adoção de um pet.
                     <strong>Tem certeza disso?</strong>
                   </p>
                 </div>
-  
+
                 <div class="botoes">
                   <ion-button expand="block" class="botao-cancelar" (click)="cancelReject()">Cancelar</ion-button>
-                  <ion-button expand="block" class="botao-confirmar" (click)="rejeitarAdocao()">Confirmar</ion-button>
+                  <ion-button expand="block" class="botao-adicionar" (click)="rejeitarAdocao()">Confirmar</ion-button>
                 </div>
-  
+
               </ion-content>
             </ng-template>
           </ion-modal>
-          
+
+          <ion-modal #acceptModal trigger="open-accept-modal">
+            <ng-template>
+              <ion-toolbar style="--background: white; height: max-content;">
+                <ion-title slot="start" style="color: #512454;">Aceitar adoção</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="cancelAccept()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                      [size]="16"></lucide-icon></ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+
+              <ion-content class="ion-padding" style="--background: white;">
+
+                <div
+                  style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
+                  <lucide-icon name="paw-print" style="color: #512454;" class="my-icon" [size]="96"></lucide-icon>
+                  <p>Você está aceitando a solicitação de adoção de um pet.
+                    <strong>Tem certeza disso?</strong>
+                  </p>
+                </div>
+
+                <div class="botoes">
+                  <ion-button expand="block" class="botao-cancelar" (click)="cancelAccept()">Cancelar</ion-button>
+                  <ion-button expand="block" class="botao-adicionar" (click)="aceitarAdocao()">Confirmar</ion-button>
+                </div>
+
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+
         </div>
       </div>
     </div>

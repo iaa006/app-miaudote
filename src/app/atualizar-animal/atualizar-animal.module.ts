@@ -8,7 +8,7 @@ import { AtualizarAnimalPageRoutingModule } from './atualizar-animal-routing.mod
 
 import { AtualizarAnimalPage } from './atualizar-animal.page';
 
-import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone, X, User, TriangleAlert, ImagePlus } from 'lucide-angular';
+import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone, X, User, TriangleAlert, ImagePlus, ArrowRight, ArrowUpRight, LogOut } from 'lucide-angular';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { CircleCheck, ListFilter, LucideAngularModule, Mail, MapPin, Menu, Phone
     FormsModule,
     IonicModule,
     AtualizarAnimalPageRoutingModule,
-    LucideAngularModule.pick({ Menu, Phone, Mail, CircleCheck, MapPin, ListFilter, X, User, TriangleAlert, ImagePlus })
+    LucideAngularModule.pick({ Menu, Phone, Mail, CircleCheck, MapPin, ListFilter, X, User, TriangleAlert, ImagePlus, ArrowRight, ArrowUpRight, LogOut })
 
   ],
   declarations: [AtualizarAnimalPage]
