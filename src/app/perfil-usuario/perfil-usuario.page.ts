@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PerfilUsuarioPage {
   @ViewChild(IonModal) modal!: IonModal;
-
+  @ViewChild('deleteModal') deleteModal!: IonModal;
   message = 'Não foi selecionado nenhum filtro além do padrão.';
   estados: string[] = [
     'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Distrito Federal',
@@ -54,8 +54,18 @@ export class PerfilUsuarioPage {
   onWillDismiss(event: Event) {
     const ev = event as CustomEvent<OverlayEventDetail<string>>;
     if (ev.detail.role === 'confirm') {
-      this.message = ev.detail.data || this.message;
+      this.router.navigate(['/login/'])
     }
+  }
+
+  deleteData() {
+    console.log('Deletando...');
+    this.apiServices.deleteUsuario(this.id);
+    this.deleteModal.dismiss(null, 'confirm');
+  }
+
+  cancelDelete() {
+    this.deleteModal.dismiss(null, 'cancel');
   }
 
   constructor(private router: Router,private apiServices : ApiService, private route: ActivatedRoute) { }

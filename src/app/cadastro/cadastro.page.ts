@@ -81,7 +81,7 @@ export class CadastroPage {
       ...this.bancarioForm.value,
       foto : null,
       descricao : null,
-
+      qtd_doacoes : 0,
       is_staff: false,
       is_superuser: false,
     };

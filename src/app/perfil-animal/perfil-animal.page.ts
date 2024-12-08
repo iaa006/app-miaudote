@@ -25,7 +25,7 @@ export class PerfilAnimalPage implements OnInit {
 
 
   navegacaoEditar() {
-    this.router.navigate(['/atualizar-animal']);
+    this.router.navigate([`/atualizar-animal/${this.id}`]);
   }
   
   deleteData() {
@@ -60,7 +60,14 @@ export class PerfilAnimalPage implements OnInit {
 
   adotar() {
     console.log('solicitando adoção...');
-    //funcionalidade pra rejeitar
+    const data_tempo = new Date()
+    const data = {
+      id_animal: this.dadosAnimal.id_animal, 
+      data_solicitacao: `${data_tempo.getFullYear()}-${data_tempo.getMonth()}-${data_tempo.getDate()}`, 
+      hora_solicitacao: `${data_tempo.getHours()}:${data_tempo.getMinutes()}:${data_tempo.getSeconds()}`, 
+      'status_solicitacao': 'Pendente'
+    };
+    this.apiServices.postSolicitacao(data).subscribe();
     this.adocaoModal.dismiss(null, 'confirm');
   }
 

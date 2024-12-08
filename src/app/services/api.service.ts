@@ -91,4 +91,17 @@ export class ApiService {
     return this.http.put(`${this.url_base}usuario/${id}`, dados, { headers })
 
   }
+
+  putAnimal(id:any, dados:any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.put(`${this.url_base}animal/${id}`, dados, { headers })
+  }
+
+  postSolicitacao(dados: any){
+    console.log(this.authToken)
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.post(`${this.url_base}realizar_solicitacao/`, dados, { headers })
+  }
 }

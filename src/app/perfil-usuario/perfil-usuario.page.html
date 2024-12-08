@@ -58,7 +58,7 @@
 
           <div style="display: flex; gap: 8px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
               [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">Doações Concluídas: <strong style="font-weight: 600; color: #87138F;">10</strong>
+            <h3 style="color: #1E1E1E">Doações Concluídas: <strong style="font-weight: 600; color: #87138F;">{{ dadosUsuario.qtd_doacoes }}</strong>
             </h3>
           </div>
 
@@ -85,10 +85,40 @@
         <span *ngIf="usuarioLogadoeDoador">
           <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
           <ion-button class="botao-editar" style="width: 100%;" (click)="editarUsuario()">Editar perfil</ion-button>
-          <ion-button class="botao-excluir" style="width: 100%;">Excluir perfil</ion-button>
+          <ion-button class="botao-excluir" style="width: 100%;" id="open-delete-modal">Excluir perfil</ion-button>
           <!-- Essa parte só aparece se o perfil for do próprio usuário autenticado -->
         </span>
         
+
+        <ion-modal #deleteModal trigger="open-delete-modal" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-toolbar style="--background: white; height: max-content;">
+              <ion-title slot="start" style="color: #512454;">Excluir perfil</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="cancelDelete()"><lucide-icon name="x" style="color: #1E1E1E;" class="my-icon"
+                    [size]="16"></lucide-icon></ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+
+            <ion-content class="ion-padding" style="--background: white;">
+
+              <div
+                style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px; justify-content: center; align-items: center;">
+                <lucide-icon name="triangle-alert" style="color: #D90004;" class="my-icon" [size]="96"></lucide-icon>
+                <p>Essa ação é irreversível e não pode ser desfeita.
+                  <strong>Tem certeza disso?</strong>
+                </p>
+              </div>
+
+              <div class="botoes">
+                <ion-button expand="block" class="botao-foto" (click)="cancelDelete()">Cancelar</ion-button>
+                <ion-button expand="block" class="botao-deletar" (click)="deleteData()">Deletar perfil</ion-button>
+              </div>
+
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
 
       </ion-card-content>
     </ion-card>

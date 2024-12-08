@@ -52,7 +52,7 @@ export class AtualizarUsuarioPage {
                     agencia_bancaria: this.dadosUsuario.agencia_bancaria,
                     conta_bancaria: this.dadosUsuario.conta_bancaria,
                     chave_pix: this.dadosUsuario.chave_pix,
-                    tipo_usuario: this.dadosUsuario.tipo_usuario } 
+                    tipo_usuario: this.dadosUsuario.tipo_usuario} 
         for (let chave in dadosUp) {
           if (dadosUp[chave] === '') {
             dadosUp[chave] = null;

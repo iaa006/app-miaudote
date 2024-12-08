@@ -33,6 +33,26 @@
     left: 5%;
   }
   
+  .botao-foto {
+    --background: #e1e4fa;
+    color: #585e8e;
+    border: solid 3px #777DAA;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+  .option-estado {
+    color: #565b84;
+    --background: white;
+}
+  .botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
   .card-perfil-menu img{
     width: 30%;
     height: 30%;
@@ -228,3 +248,18 @@ ion-card{
     font-weight: 800;
   }
     
+
+  .botao-cancelar {
+    --background: #FCE5FE;
+    color: #87138F;
+    border: solid 2px #87138F;
+    font-weight: 600;
+    --border-radius: 4px;
+    border-radius: 4px;
+}
+
+.botao-deletar {
+    --background: #D90004;
+    color: white;
+    font-weight: 600;
+}

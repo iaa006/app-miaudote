@@ -42,7 +42,7 @@
     <ion-label style="font-size: 14px;">Insira o novo nome</ion-label>
     <span class="input-wrapper">
       <lucide-icon name="user" style="color: #1E1E1E;" class="my-icon lucide-icon" [size]="16"></lucide-icon>
-      <input type="text" placeholder="Nome do animal" name="edit-nome">
+      <input type="text" placeholder="Nome do animal" name="edit-nome" [(ngModel)]="nomeAnimal">
     </span>
   </div>
 
@@ -99,7 +99,7 @@
   <div style="--background: #fff; color: #512454; display: flex; flex-direction: column; margin: 8px 0px;">
     <ion-label style="font-size: 14px;">Insira a nova descrição</ion-label>
     <span class="input-wrapper">
-      <ion-textarea style="text-align: left; vertical-align: top; padding-bottom: 16px;"
+      <ion-textarea [(ngModel)]="descricao" style="text-align: left; vertical-align: top; padding-bottom: 16px;"
         placeholder="Descrição"></ion-textarea>
     </span>
   </div>
