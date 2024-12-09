@@ -50,7 +50,9 @@ export class ApiService {
   }
 
   getAnimalUnico(id:any){
-    return this.http.get(`${this.url_base}animal/${id}`)
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}animal/${id}`,  { headers })
   }
   getSolicitacoesAnimal(id_animal: any){
     return this.http.get(`http://`)
@@ -103,5 +105,32 @@ export class ApiService {
     const headers = new HttpHeaders()
       .set(`Authorization`, `Token ${this.authToken}`)
     return this.http.post(`${this.url_base}realizar_solicitacao/`, dados, { headers })
+  }
+  getSolicitacoes(id: any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}realizar_solicitacao/`, { headers })
+  }
+  putAceitarSolicitacao(id: any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}aceitar_solicitacao/`, { headers })
+  }
+  putRecusarSolicitacao(id: any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.get(`${this.url_base}recusar_solicitacao/`, { headers })
+  }
+  deleteAnimal(id:any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.delete(`${this.url_base}animal/${id}`,  { headers })
+  
+  }
+
+  postAnimais(dados:any){
+    const headers = new HttpHeaders()
+      .set(`Authorization`, `Token ${this.authToken}`)
+    return this.http.post(`${this.url_base}animais/`, dados, { headers })
   }
 }

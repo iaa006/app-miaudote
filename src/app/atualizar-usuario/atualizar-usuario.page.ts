@@ -18,7 +18,6 @@ export class AtualizarUsuarioPage {
   @ViewChild('editFotoModal') editFotoModal!: IonModal;
   id:string = '';
   dadosUsuario:any;
-
   ngOnInit() {
     this.route.params.subscribe( parametros => {
       if (parametros['id']) {
@@ -150,4 +149,5 @@ export class AtualizarUsuarioPage {
     this.complemento = data.usuario.complemento;
     this.descricao = data.usuario.descricao;
   }
+  
 }

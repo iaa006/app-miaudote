@@ -71,6 +71,23 @@
       </div>
   
       <div class="campo-forms">
+        <h3 class="titulo-filtro">Estado</h3>
+        <ion-select style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+          placeholder="Selecionar" [(ngModel)]="estadoSelecionado">
+          <ion-select-option
+            style="background-color: white; color: #512454; padding: 0px 8px; border: solid 2px #512454;"
+            *ngFor="let estado of estados" [value]="estado">{{ estado }}</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="campo-forms">
+        <h3 class="titulo-forms">Informe a cidade</h3>
+        <ion-item class="input-forms ion-text-start">
+          <ion-textarea style="text-align: left; vertical-align: top; padding-bottom: 16px;" placeholder="Descrição" [(ngModel)]="cidade"></ion-textarea>
+        </ion-item>
+      </div>
+
+      <div class="campo-forms">
         <h3 class="titulo-forms">*Informe o tamanho</h3>
         <ion-radio-group [(ngModel)]="tamanhoSelecionado">
           <ion-item style="--background:none; color: #1E1E1E;"
@@ -139,11 +156,12 @@
         </ion-item>
       </div>
 
+      
       <div class="botoes">
 
         <!-- colocar redirecionamento nesses botoes -->
-        <ion-button expand="block" class="botao-cancelar">Cancelar</ion-button>
-        <ion-button expand="block" class="botao-confirmar">Confirmar</ion-button>
+        <ion-button expand="block" class="botao-cancelar" (click)="cancelAddAnimal()">Cancelar</ion-button>
+        <ion-button expand="block" class="botao-confirmar" (click)="saveAnimal()">Confirmar</ion-button>
 
       </div>
     </div>

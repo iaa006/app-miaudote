@@ -13,7 +13,7 @@ export class PerfilAnimalPage implements OnInit {
   id : number = 1;
   dadosAnimal : any;
   usuarioLogadoeDoador : boolean = false;
-  dadosSolicitacoes : any[] = [];
+  dadosSolicitacoes : any;
 
 
   constructor(private apiServices : ApiService, private route: ActivatedRoute, private router: Router) { }
@@ -30,17 +30,18 @@ export class PerfilAnimalPage implements OnInit {
   
   deleteData() {
     console.log('Deletando...');
-    //funcionalidade pra dar o delete
+    this.apiServices.deleteAnimal(this.id).subscribe()
     this.deleteModal.dismiss(null, 'confirm');
+    this.router.navigate([`/home/`]);
   }
 
   cancelDelete() {
     this.deleteModal.dismiss(null, 'cancel');
   }
   
-  rejeitarAdocao() {
+  rejeitarAdocao(idSolicitacao: any) {
     console.log('rejeitando...');
-    //funcionalidade pra rejeitar
+    this.apiServices.putRecusarSolicitacao(idSolicitacao).subscribe()
     this.rejectModal.dismiss(null, 'confirm');
   }
 
@@ -48,9 +49,9 @@ export class PerfilAnimalPage implements OnInit {
     this.rejectModal.dismiss(null, 'cancel');
   }
 
-  aceitarAdocao() {
+  aceitarAdocao(idSolicitacao: any) {
     console.log('aceitando...');
-    //funcionalidade pra rejeitar
+    this.apiServices.putAceitarSolicitacao(idSolicitacao).subscribe()
     this.acceptModal.dismiss(null, 'confirm');
   }
 
@@ -84,6 +85,10 @@ export class PerfilAnimalPage implements OnInit {
     });
 
     this.getDadosAnimal();
+    if(this.usuarioLogadoeDoador){
+      this.getSolicitacoes()
+    }
+    console.log(this.usuarioLogadoeDoador)
   }
   
   async getDadosAnimal(){
@@ -92,10 +97,9 @@ export class PerfilAnimalPage implements OnInit {
     this.dadosAnimal = data.animal;
     this.usuarioLogadoeDoador = data.usuarioProprietario;
   }
-  getSolicitacoes(){
-    this.apiServices.getSolicitacoesAnimal(this.id).subscribe((data: any) =>{
-      this.dadosSolicitacoes = data;
-    })
+  async getSolicitacoes(){
+    const data = this.apiServices.getSolicitacoesAnimal(this.id).toPromise()
+    this.dadosSolicitacoes = data;
   }
 
 }

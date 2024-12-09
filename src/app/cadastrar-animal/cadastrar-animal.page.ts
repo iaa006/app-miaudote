@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { IonModal } from '@ionic/angular';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-cadastrar-animal',
@@ -14,6 +15,7 @@ export class CadastrarAnimalPage {
 
   @ViewChild('addFotoModal') addFotoModal!: IonModal;
 
+  constructor(private apiServices: ApiService, private router : Router){}
 
   nomeAnimal: string = '';
   especieSelecionada: string = '';
@@ -21,6 +23,15 @@ export class CadastrarAnimalPage {
   tamanhoSelecionado: string = '';
   idadeSelecionada: string = '';
   descricao: string = '';
+  estados: string[] = [
+    'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Distrito Federal',
+    'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul',
+    'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí',
+    'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia',
+    'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins',
+  ];
+  estadoSelecionado: string = '';
+  cidade: string = '';
 
   async selecionarImagem() {
     try {
@@ -55,7 +66,41 @@ export class CadastrarAnimalPage {
     }
   }
 
+  cancelAddAnimal(){
+    this.router.navigate(['/home'])
 
+  }
+
+  saveAnimal(){
+    const data_tempo = new Date()
+    const dadosUp = {
+      animal_nome: this.nomeAnimal,
+        especie: this.especieSelecionada,
+        idade: this.idadeSelecionada,
+        tamanho: this.tamanhoSelecionado,
+        sexo: this.sexoSelecionado,
+        cidade: this.cidade,
+        estado: this.estadoSelecionado,
+        descricao: this.descricao,
+        foto: "não tem",
+        status: "disponivel",
+        data_criacao: `${data_tempo.getFullYear()}-${data_tempo.getMonth()}-${data_tempo.getDate()}`,
+        data_adocao: null,
+        id_adotador: null,
+    }
+
+    if (dadosUp['sexo'] === 'Macho'){
+      dadosUp['sexo'] = 'M'
+    }
+    if (dadosUp['sexo'] === 'Fêmea'){
+      dadosUp['sexo'] = 'F'
+    }
+
+
+    this.apiServices.postAnimais(dadosUp).subscribe()
+    
+    this.router.navigate(['/home'])
+  }
   // fazer funcionalidade para criar animal...
 
 }
