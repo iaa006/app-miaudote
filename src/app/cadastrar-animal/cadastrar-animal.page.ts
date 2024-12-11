@@ -9,11 +9,12 @@ import { ApiService } from '../services/api.service';
   templateUrl: './cadastrar-animal.page.html',
   styleUrls: ['./cadastrar-animal.page.scss'],
 })
-export class CadastrarAnimalPage {
+export class CadastrarAnimalPage implements OnInit{
 
   selectedImage: string | null = null;
 
   @ViewChild('addFotoModal') addFotoModal!: IonModal;
+  usuarioLogado: any;
 
   constructor(private apiServices: ApiService, private router : Router){}
 
@@ -65,7 +66,10 @@ export class CadastrarAnimalPage {
 
     }
   }
-
+  ngOnInit(): void {
+    
+    this.usuarioLogado = this.apiServices.infoUsuario
+  }
   cancelAddAnimal(){
     this.router.navigate(['/home'])
 
@@ -102,5 +106,11 @@ export class CadastrarAnimalPage {
     this.router.navigate(['/home'])
   }
   // fazer funcionalidade para criar animal...
+  logout(){
+    this.router.navigate(["/login"])
+  }
+  home(){
+    this.router.navigate(['/home'])
 
+  }
 }

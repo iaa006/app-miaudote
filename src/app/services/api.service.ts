@@ -82,7 +82,7 @@ export class ApiService {
 
   deleteUsuario(id:any){
     const httpHeaders: HttpHeaders = new HttpHeaders({
-      Authorization: `Token 344527c9384b0dbf3268658988efa0a6021ac2e5`
+      Authorization: `Token ${this.authToken}`
     });
     return this.http.delete(`${this.url_base}usuario/${id}`, { headers: httpHeaders })
   }

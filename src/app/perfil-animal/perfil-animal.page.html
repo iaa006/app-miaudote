@@ -7,16 +7,16 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content id="conteudo-menu" class="ion-padding">
+  <ion-content id="conteudo-menu"class="ion-padding">
     <div class="card-perfil-menu">
       <img src="../../assets/gato-2.png" alt="" srcset="">
       <div>
-        <h4 >Igão Foguete</h4>
-        <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+        <h4>{{ usuarioLogado.nome_completo }}</h4>
+        <a [routerLink]="['/perfil-usuario', usuarioLogado.id_user]">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
       </div>
     </div>
-    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon
-        name="log-out"></lucide-icon></button>
+    <button class="card-perfil-menu" slot="fixed" (click)="home()"><strong>Inicio</strong><lucide-icon name="home"></lucide-icon></button>
+    <button class="card-perfil-menu" slot="fixed" (click)="logout()"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
   </ion-content>
 </ion-menu>
 
@@ -37,7 +37,7 @@
 
       <ion-card-title style="color: #512454; font-weight: 600;">{{ dadosAnimal.animal_nome }}</ion-card-title>
       <ion-card-subtitle style="color: #512454">&#64;{{ dadosAnimal.nome_doador }}</ion-card-subtitle>
-      <h4 class="botao-vazio">Acessar doador</h4>
+      <h4 class="botao-vazio" [routerLink]="['/perfil-usuario', dadosAnimal.id_doador]">Acessar doador</h4>
       <div class="infos-pet">
         <span><lucide-icon class="my-icon" [size]="16" name="phone"></lucide-icon> {{ dadosAnimal.telefone_doador }}</span>
         <span><lucide-icon class="my-icon" [size]="16" name="mail"></lucide-icon> {{ dadosAnimal.email_doador }}</span>
@@ -218,3 +218,4 @@
       
     </div>
   </ion-content>
+</div>

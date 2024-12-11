@@ -11,11 +11,11 @@
     <div class="card-perfil-menu">
       <img src="../../assets/gato-2.png" alt="" srcset="">
       <div>
-        <h4>Igão Foguete</h4>
-        <a href="">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
+        <h4>{{ usuarioLogado.nome_completo }}</h4>
+        <a [routerLink]="['/perfil-usuario', usuarioLogado.id_user]">Ver perfil <lucide-icon name="arrow-up-right"></lucide-icon></a>
       </div>
     </div>
-    <button class="card-perfil-menu" slot="fixed"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
+    <button class="card-perfil-menu" slot="fixed" (click)="logout()"><strong>Sair</strong><lucide-icon name="log-out"></lucide-icon></button>
   </ion-content>
 </ion-menu>
 

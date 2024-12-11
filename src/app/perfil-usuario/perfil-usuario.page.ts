@@ -32,6 +32,7 @@ export class PerfilUsuarioPage {
   dadosUsuario : any;
   usuarioLogadoeDoador : boolean = false;
   animaisUsuario : any;
+  usuarioLogado: any;
 
   cancel() {
     this.modal.dismiss(null, 'cancel');
@@ -75,6 +76,7 @@ export class PerfilUsuarioPage {
       if (parametros['id']) {
         this.id = parametros['id']
       }
+      this.usuarioLogado = this.apiServices.infoUsuario
 
     this.getDadosUsuario();
     this.getAnimaisDoador()
@@ -102,4 +104,12 @@ export class PerfilUsuarioPage {
     )
   }
 
+
+  logout(){
+    this.router.navigate(["/login"])
+  }
+  home(){
+    this.router.navigate(['/home'])
+
+  }
 }

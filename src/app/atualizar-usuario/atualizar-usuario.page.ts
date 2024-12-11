@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./atualizar-usuario.page.scss'],
 })
 export class AtualizarUsuarioPage {
+  usuarioLogado: any;
   constructor(private router: Router, private apiServices : ApiService, private route: ActivatedRoute ) { }
   selectedImage: string | null = null;
 
@@ -23,12 +24,20 @@ export class AtualizarUsuarioPage {
       if (parametros['id']) {
         this.id = parametros['id']
       }
+      this.usuarioLogado = this.apiServices.infoUsuario
 
     this.getDadosUsuario();
     console.log(this.apiServices.infoUsuario)
     });
 }
 
+logout(){
+  this.router.navigate(["/login"])
+}
+home(){
+  this.router.navigate(['/home'])
+
+}
   saveEditData() {
     console.log('Atualizado...');
     const dadosUp: Record<string, string | null>= {

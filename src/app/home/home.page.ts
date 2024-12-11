@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomePage implements OnInit{
   @ViewChild(IonModal) modal!: IonModal;
   public dadosListagem: any[] = []
   public message: string = '';
+  public usuarioLogado : any;
   estados: string[] = [
     'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Distrito Federal',
     'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul',
@@ -51,10 +53,11 @@ export class HomePage implements OnInit{
   
   }
 
-  constructor(private apiServices: ApiService) {}
+  constructor(private apiServices: ApiService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAnimais()
+    this.usuarioLogado = this.apiServices.infoUsuario
   }
   getAnimais(){
     this.apiServices.getAnimais().subscribe((data: any) =>{
@@ -126,6 +129,10 @@ export class HomePage implements OnInit{
   verDoador(){
     this.verAnimaisOuDoadores = false;
     this.getDoadores();
+  }
+
+  logout(){
+    this.router.navigate(["/login"])
   }
 }
 

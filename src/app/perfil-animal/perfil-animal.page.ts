@@ -14,7 +14,7 @@ export class PerfilAnimalPage implements OnInit {
   dadosAnimal : any;
   usuarioLogadoeDoador : boolean = false;
   dadosSolicitacoes : any;
-
+  usuarioLogado:any;
 
   constructor(private apiServices : ApiService, private route: ActivatedRoute, private router: Router) { }
 
@@ -83,6 +83,7 @@ export class PerfilAnimalPage implements OnInit {
         this.id = parametros['id']
       }
     });
+    this.usuarioLogado = this.apiServices.infoUsuario
 
     this.getDadosAnimal();
     if(this.usuarioLogadoeDoador){
@@ -100,6 +101,14 @@ export class PerfilAnimalPage implements OnInit {
   async getSolicitacoes(){
     const data = this.apiServices.getSolicitacoesAnimal(this.id).toPromise()
     this.dadosSolicitacoes = data;
+  }
+
+  logout(){
+    this.router.navigate(["/login"])
+  }
+  home(){
+    this.router.navigate(['/home'])
+
   }
 
 }

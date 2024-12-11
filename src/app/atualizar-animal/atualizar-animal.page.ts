@@ -12,6 +12,7 @@ import { ApiService } from '../services/api.service';
 export class AtualizarAnimalPage implements OnInit {
   id: any;
   dadosAnimal: any;
+  usuarioLogado: any;
   constructor(private router: Router, private route : ActivatedRoute, private apiServices : ApiService) { }
 
   selectedImage: string | null = null;
@@ -111,8 +112,11 @@ export class AtualizarAnimalPage implements OnInit {
         this.id = parametros['id']
       }
     });
-
-   this.getDadosAnimal() 
+    
+    
+      this.usuarioLogado = this.apiServices.infoUsuario
+    
+    this.getDadosAnimal() 
   }
 
   async getDadosAnimal(){
@@ -134,6 +138,12 @@ export class AtualizarAnimalPage implements OnInit {
     this.descricao = this.dadosAnimal.descricao;
     console.log(this.nomeAnimal)
   }
+  logout(){
+    this.router.navigate(["/login"])
+  }
+  home(){
+    this.router.navigate(['/home'])
 
+  }
 
 }
