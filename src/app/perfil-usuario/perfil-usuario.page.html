@@ -234,45 +234,80 @@
     <span *ngFor="let animal of animaisUsuario.animais">
       <ion-card *ngIf="animal.status == 'disponivel'; else petIndisponivel">
         <ion-card-header class="status-pet-disponivel">
-          <ion-card-title >DISPONÍVEL</ion-card-title>
+          <ion-card-title style="color: white; font-weight: 600;">DISPONÍVEL</ion-card-title>
         </ion-card-header>
         
-        <ion-card-content>
-          <img src="../../assets/gato-2.png" alt="">
-          <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
-          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
-          <ul class="infos-pet">
-            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
-          </ul>
-          <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
-        </ion-card-content>
+        <ion-card-content
+        style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center; padding: 16px;">
+        <img src="../../assets/gato-2.png" alt="Foto de Perfil do Usuário" width="200px" style="border-radius: 50%;">
+        <div class="ion-text-center" style="display: flex; flex-direction: column; gap: 4px; margin: 8px 0px;">
+          <ion-card-title style="color: #512454; font-weight: 600;">{{animal.animal_nome}}</ion-card-title>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; justify-content: start;">
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="map-pin" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+            <h3 style="color: #1E1E1E">{{ animal.localizacao}}</h3>
+          </div>
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+              <h3 style="color: #1E1E1E" *ngIf="animal.sexo === 'M'; else animalFemea">Macho</h3>
+              <ng-template #animalFemea>
+                <h3 style="color: #1E1E1E">Fêmea</h3></ng-template>
+          </div>
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+              <h3 style="color: #1E1E1E">{{ animal.tamanho }}</h3>
+            </div>
+
+        </div>
+
+        <ion-button [routerLink]="['/perfil-animal', animal.id_animal]" class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
+
+      </ion-card-content>
+
       </ion-card>
 
       <ng-template #petIndisponivel>
         <ion-card>
         <ion-card-header class="status-pet-indisponivel">
-          <ion-card-title >INDISPONÍVEL</ion-card-title>
+          <ion-card-title style="color: white; font-weight: 600;" >INDISPONÍVEL</ion-card-title>
         </ion-card-header>
         
-        <ion-card-content>
-          <img src="../../assets/gato-2.png" alt="">
-          <ion-card-title>{{ animal.animal_nome }}</ion-card-title>
-          <ion-card-subtitle>Igão Foguete</ion-card-subtitle>
-          <ul class="infos-pet">
-            <li><img src="../../assets/map-pin.png" alt="">Xique-xique (BA)</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">{{ animal.sexo }}</li>
-            <br>
-            <li><img src="../../assets/check_circle.png" alt="">Pequeno</li>
-          </ul>
-          <ion-button [routerLink]="['/perfil-animal', animal.id_animal]">Ver detalhes</ion-button>
-        </ion-card-content>
-      </ion-card>
-      </ng-template>
+        <ion-card-content
+        style="display: flex; flex-direction: column; gap: 4px; justify-content: center; align-items: center; padding: 16px;">
+        <img src="../../assets/gato-2.png" alt="Foto de Perfil do Usuário" width="200px" style="border-radius: 50%;">
+        <div class="ion-text-center" style="display: flex; flex-direction: column; gap: 4px; margin: 8px 0px;">
+          <ion-card-title style="color: #512454; font-weight: 600;">{{animal.animal_nome}}</ion-card-title>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px; justify-content: start;">
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="map-pin" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+            <h3 style="color: #1E1E1E">{{ animal.localizacao}}</h3>
+          </div>
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+            <h3 style="color: #1E1E1E" *ngIf="animal.sexo === 'M'; else animalFemea">Macho</h3>
+            <ng-template #animalFemea>
+              <h3 style="color: #1E1E1E">Fêmea</h3></ng-template>
+          </div>
+
+          <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
+              [size]="16"></lucide-icon>
+            <h3 style="color: #1E1E1E">{{ animal.tamanho }}</h3>
+          </div>
+
+        </div>
+
+        <ion-button [routerLink]="['/perfil-animal', animal.id_animal]" class="botao-editar" style="width: 100%;">Ver detalhes</ion-button>
+
+      </ion-card-content>
+
+      </ion-card></ng-template>
     </span>
     
 
@@ -284,11 +319,12 @@
 
   <div class="infos-monetaria">
     <h4 style="font-weight: 600;">Quero ajudar este doador!</h4>
-    <p><strong>Agência:</strong> 0000</p>
-    <p><strong>Conta:</strong> 0000</p>
-    <p><strong>Pix:</strong> 0000</p>
-    <p><strong>Responsável:</strong> Igor Costa Ayres</p>
+    <p><strong>Agência:</strong> {{ dadosUsuario.agencia_bancaria }}</p>
+    <p><strong>Conta:</strong> {{ dadosUsuario.conta_bancaria }}</p>
+    <p><strong>Pix:</strong> {{ dadosUsuario.chave_pix }}</p>
+    <p><strong>Responsável:</strong> {{ dadosUsuario.responsavel }}</p>
   </div>
+
 
 </ion-content>
 </div>
