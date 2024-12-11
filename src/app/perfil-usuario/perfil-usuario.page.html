@@ -69,7 +69,7 @@
               <h3 style="color: #87138F; font-weight: 600;">Endereço</h3>
             </div>
             <p style="color: #1E1E1E;">
-              {{ dadosUsuario.logradouro }} - {{ dadosUsuario.cidade }} ({{ dadosUsuario.estado }})
+              {{ dadosUsuario.logradouro }} - {{ dadosUsuario.cidade }} - {{ dadosUsuario.estado }}
             </p>
           </div>
 
@@ -247,7 +247,7 @@
 
           <div style="display: flex; gap: 4px;"><lucide-icon name="map-pin" class="my-icon icone-perfil"
               [size]="16"></lucide-icon>
-            <h3 style="color: #1E1E1E">{{ animal.localizacao}}</h3>
+            <h3 style="color: #1E1E1E">{{ animal.cidade}} - {{ animal.estado }}</h3>
           </div>
 
           <div style="display: flex; gap: 4px;"><lucide-icon name="circle-check" class="my-icon icone-perfil"
